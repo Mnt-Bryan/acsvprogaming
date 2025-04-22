@@ -5,6 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
 
 type Profile = {
   id: string;
@@ -103,20 +104,26 @@ const ProfilePage = () => {
         <CardContent>
           {editing ? (
             <form onSubmit={handleUpdate} className="space-y-4">
-              <Input
-                label="Username"
-                placeholder="Enter username"
-                value={username}
-                onChange={e => setUsername(e.target.value)}
-                disabled={loading}
-              />
-              <Input
-                label="Avatar URL"
-                placeholder="Enter avatar image URL"
-                value={avatar}
-                onChange={e => setAvatar(e.target.value)}
-                disabled={loading}
-              />
+              <div className="space-y-2">
+                <Label htmlFor="username">Username</Label>
+                <Input
+                  id="username"
+                  placeholder="Enter username"
+                  value={username}
+                  onChange={e => setUsername(e.target.value)}
+                  disabled={loading}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="avatar">Avatar URL</Label>
+                <Input
+                  id="avatar"
+                  placeholder="Enter avatar image URL"
+                  value={avatar}
+                  onChange={e => setAvatar(e.target.value)}
+                  disabled={loading}
+                />
+              </div>
               <Button type="submit" className="w-full bg-gaming-red text-white" disabled={loading}>
                 Save
               </Button>
