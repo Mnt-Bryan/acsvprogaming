@@ -1,14 +1,33 @@
 
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Gamepad2, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useSession } from "@/hooks/useSession";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { session, user } = useSession();
+  const navigate = useNavigate();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const handleJoin = () => {
+    navigate("/auth");
+    setIsMenuOpen(false);
+  };
+
+  const handleProfile = () => {
+    navigate("/profile");
+    setIsMenuOpen(false);
+  };
+
+  const handleLogout = async () => {
+    await import("@/integrations/supabase/client").then(({ supabase }) =>
+      supabase.auth.signOut()
+    );
+    navigate("/auth");
+    setIsMenuOpen(false);
   };
 
   return (
@@ -29,10 +48,21 @@ const Navbar = () => {
             <Link to="/forums" className="text-gaming-white hover:text-gaming-red font-medium transition duration-200">Forums</Link>
           </div>
 
-          <div className="hidden md:block">
-            <Button className="bg-gaming-red hover:bg-red-700 text-white">
-              Join ACSV
-            </Button>
+          <div className="hidden md:flex items-center gap-4">
+            {session ? (
+              <>
+                <Button className="bg-gaming-gray text-white" onClick={handleProfile}>
+                  Profile
+                </Button>
+                <Button className="bg-gaming-red text-white" onClick={handleLogout}>
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <Button className="bg-gaming-red hover:bg-red-700 text-white" onClick={handleJoin}>
+                Join ACSV
+              </Button>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -52,9 +82,20 @@ const Navbar = () => {
             <Link to="/reviews" className="text-gaming-white hover:text-gaming-red font-medium py-2 transition duration-200" onClick={toggleMenu}>Reviews</Link>
             <Link to="/news" className="text-gaming-white hover:text-gaming-red font-medium py-2 transition duration-200" onClick={toggleMenu}>News</Link>
             <Link to="/forums" className="text-gaming-white hover:text-gaming-red font-medium py-2 transition duration-200" onClick={toggleMenu}>Forums</Link>
-            <Button className="bg-gaming-red hover:bg-red-700 text-white w-full">
-              Join ACSV
-            </Button>
+            {session ? (
+              <>
+                <Button className="w-full bg-gaming-gray text-white" onClick={handleProfile}>
+                  Profile
+                </Button>
+                <Button className="w-full bg-gaming-red text-white" onClick={handleLogout}>
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <Button className="bg-gaming-red hover:bg-red-700 text-white w-full" onClick={handleJoin}>
+                Join ACSV
+              </Button>
+            )}
           </div>
         </div>
       )}
