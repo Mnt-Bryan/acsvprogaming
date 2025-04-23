@@ -46,6 +46,7 @@ const Navbar = () => {
             <Link to="/reviews" className="text-gaming-white hover:text-gaming-red font-medium transition duration-200">Reviews</Link>
             <Link to="/news" className="text-gaming-white hover:text-gaming-red font-medium transition duration-200">News</Link>
             <Link to="/tournaments" className="text-gaming-white hover:text-gaming-red font-medium transition duration-200">Tournaments</Link>
+            <Link to="/tournaments/categories" className="text-gaming-white hover:text-gaming-red font-medium transition duration-200">Categories</Link>
             <Link to="/forums" className="text-gaming-white hover:text-gaming-red font-medium transition duration-200">Forums</Link>
           </div>
 

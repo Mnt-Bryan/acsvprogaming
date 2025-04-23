@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -16,6 +15,8 @@ type Message = {
 interface AIAssistantProps {
   initiallyOpen?: boolean;
 }
+
+const EDGE_FUNCTION_URL = "https://vqbzdwvfgbkczwbjdbfr.functions.supabase.co/site-ai-assistant";
 
 const AIAssistant = ({ initiallyOpen = false }: AIAssistantProps) => {
   const [isOpen, setIsOpen] = useState(initiallyOpen);
@@ -52,32 +53,28 @@ const AIAssistant = ({ initiallyOpen = false }: AIAssistantProps) => {
     setMessages(prev => [...prev, userMessage]);
     setMessage("");
     setIsLoading(true);
-    
+
     try {
-      // Simulate AI response for now - in a real implementation, this would call an API
-      setTimeout(() => {
-        const botResponses = [
-          "I can help you find tournaments that match your interests. What games do you play?",
-          "The next ACSV FIFA tournament is scheduled for May 15th, 2025 in Yaoundé.",
-          "You can register for tournaments through the links provided on each tournament card.",
-          "ACSV organizes tournaments for FIFA, Call of Duty, League of Legends, and many other popular games.",
-          "Yes, ACSV hosts both online and in-person tournaments across Cameroon.",
-          "Our mission is to promote esports and gaming culture in Cameroon and across Africa."
-        ];
-        
-        // For demo purposes, choose a random response
-        const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
-        
-        const assistantMessage: Message = {
-          id: Date.now().toString(),
-          role: 'assistant',
-          content: randomResponse,
-          timestamp: new Date()
-        };
-        
-        setMessages(prev => [...prev, assistantMessage]);
-        setIsLoading(false);
-      }, 1000);
+      // Send conversation to the Edge Function, get OpenAI reply
+      const convo = [
+        ...messages.map(m => ({ role: m.role, content: m.content })),
+        { role: "user", content: message }
+      ];
+      const res = await fetch(EDGE_FUNCTION_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: convo })
+      });
+      if (!res.ok) throw new Error("Could not get response from assistant");
+      const data = await res.json();
+
+      const aiMessage: Message = {
+        id: Date.now().toString() + Math.random().toString(36).slice(2),
+        role: "assistant",
+        content: data.assistant || "Sorry, I couldn't find info about that on ACSV.",
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, aiMessage]);
     } catch (error) {
       console.error("Error getting AI response:", error);
       toast({
@@ -85,8 +82,8 @@ const AIAssistant = ({ initiallyOpen = false }: AIAssistantProps) => {
         title: "Error",
         description: "Could not get a response. Please try again later."
       });
-      setIsLoading(false);
     }
+    setIsLoading(false);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
