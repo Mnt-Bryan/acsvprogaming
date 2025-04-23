@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Gamepad2 } from "lucide-react";
+import { Gamepad2, Youtube, Discord, ExternalLink } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -31,10 +31,57 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4 text-gaming-red">Community</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-gaming-red transition duration-200">Discord</a></li>
-              <li><a href="#" className="hover:text-gaming-red transition duration-200">Facebook</a></li>
-              <li><a href="#" className="hover:text-gaming-red transition duration-200">Twitter</a></li>
-              <li><a href="#" className="hover:text-gaming-red transition duration-200">Instagram</a></li>
+              <li>
+                <a 
+                  href="https://discord.gg/czwAPjwZ" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center hover:text-gaming-red transition duration-200"
+                >
+                  <Discord className="mr-2" size={18} />
+                  Discord
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="https://m.youtube.com/@ACSVPROGAMING" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center hover:text-gaming-red transition duration-200"
+                >
+                  <Youtube className="mr-2" size={18} />
+                  YouTube
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="https://www.tiktok.com/@acsv_progaming" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center hover:text-gaming-red transition duration-200"
+                >
+                  <ExternalLink className="mr-2" size={18} />
+                  TikTok
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#" 
+                  className="flex items-center hover:text-gaming-red transition duration-200"
+                >
+                  <ExternalLink className="mr-2" size={18} />
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#" 
+                  className="flex items-center hover:text-gaming-red transition duration-200"
+                >
+                  <ExternalLink className="mr-2" size={18} />
+                  Twitter
+                </a>
+              </li>
             </ul>
           </div>
           
@@ -62,3 +109,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
