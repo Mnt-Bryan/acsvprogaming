@@ -1,5 +1,6 @@
+
 import { Link } from "react-router-dom";
-import { Gamepad2, Youtube, ExternalLink } from "lucide-react";
+import { Youtube, ExternalLink } from "lucide-react";
 import { DiscordLogoIcon } from "@radix-ui/react-icons";
 
 const Footer = () => {
