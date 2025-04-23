@@ -59,13 +59,11 @@ const AIAssistant = ({ initiallyOpen = false }: AIAssistantProps) => {
         .map(m => ({ role: m.role, content: m.content }))
         .concat({ role: "user", content: message });
 
-      const { data: { session } } = await supabase.auth.getSession();
-
+      // We don't need authorization for this endpoint as it's configured in Supabase
       const res = await fetch(EDGE_FUNCTION_URL, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": session?.access_token ? `Bearer ${session.access_token}` : ""
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({ messages: messagesToSend })
       });
