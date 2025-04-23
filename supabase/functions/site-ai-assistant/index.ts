@@ -17,6 +17,14 @@ serve(async (req) => {
   try {
     const { messages } = await req.json();
 
+    // Log for debugging
+    console.log("Received request with messages:", JSON.stringify(messages));
+    console.log("OpenAI Key available:", !!openAIApiKey);
+
+    if (!openAIApiKey) {
+      throw new Error("OpenAI API key is not configured");
+    }
+
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -37,15 +45,23 @@ serve(async (req) => {
       })
     });
 
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("OpenAI API Error:", response.status, errorText);
+      throw new Error(`OpenAI API returned ${response.status}: ${errorText}`);
+    }
+
     const data = await response.json();
     const answer = data.choices?.[0]?.message?.content;
+
+    console.log("Successfully generated response");
 
     return new Response(JSON.stringify({ assistant: answer }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (e) {
-    console.error(e);
-    return new Response(JSON.stringify({ error: "Failed to get response from AI." }), {
+    console.error("Error in site-ai-assistant function:", e);
+    return new Response(JSON.stringify({ error: e.message || "Failed to get response from AI." }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" }
     });

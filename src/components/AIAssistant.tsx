@@ -1,9 +1,11 @@
+
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Bot, X, Send, Minimize, Maximize, ChevronDown, ChevronUp, PanelRight } from "lucide-react";
+import { Bot, X, Send, ChevronDown, ChevronUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 type Message = {
   id: string;
@@ -55,34 +57,55 @@ const AIAssistant = ({ initiallyOpen = false }: AIAssistantProps) => {
     setIsLoading(true);
 
     try {
-      // Send conversation to the Edge Function, get OpenAI reply
-      const convo = [
-        ...messages.map(m => ({ role: m.role, content: m.content })),
-        { role: "user", content: message }
-      ];
+      // Format messages for OpenAI (excluding timestamps and IDs)
+      const messagesToSend = messages
+        .map(m => ({ role: m.role, content: m.content }))
+        .concat({ role: "user", content: message });
+
+      // Get auth token for the Edge Function request
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      // Send conversation to the Edge Function
       const res = await fetch(EDGE_FUNCTION_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: convo })
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": session?.access_token ? `Bearer ${session.access_token}` : ""
+        },
+        body: JSON.stringify({ messages: messagesToSend })
       });
-      if (!res.ok) throw new Error("Could not get response from assistant");
+      
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        console.error("Error response:", res.status, errorData);
+        throw new Error(errorData.error || `Error: ${res.status}`);
+      }
+      
       const data = await res.json();
+
+      if (!data.assistant) {
+        throw new Error("No response received from assistant");
+      }
 
       const aiMessage: Message = {
         id: Date.now().toString() + Math.random().toString(36).slice(2),
         role: "assistant",
-        content: data.assistant || "Sorry, I couldn't find info about that on ACSV.",
+        content: data.assistant,
         timestamp: new Date()
       };
+      
       setMessages(prev => [...prev, aiMessage]);
     } catch (error) {
       console.error("Error getting AI response:", error);
       toast({
         variant: "destructive",
         title: "Error",
-        description: "Could not get a response. Please try again later."
+        description: error instanceof Error 
+          ? error.message 
+          : "Could not get a response. Please try again later."
       });
     }
+    
     setIsLoading(false);
   };
 
