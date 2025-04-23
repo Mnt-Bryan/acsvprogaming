@@ -12,6 +12,8 @@ import ForumsPage from "./pages/ForumsPage";
 import NotFound from "./pages/NotFound";
 import AuthPage from "./pages/AuthPage";
 import ProfilePage from "./pages/ProfilePage";
+import TournamentsPage from "./pages/TournamentsPage";
+import AIAssistant from "./components/AIAssistant";
 
 const App = () => {
   // Create a client inside the component to ensure it's created in the React lifecycle
@@ -28,11 +30,13 @@ const App = () => {
             <Route path="/reviews" element={<ReviewsPage />} />
             <Route path="/news" element={<NewsPage />} />
             <Route path="/forums" element={<ForumsPage />} />
+            <Route path="/tournaments" element={<TournamentsPage />} />
             <Route path="/auth" element={<AuthPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <AIAssistant />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

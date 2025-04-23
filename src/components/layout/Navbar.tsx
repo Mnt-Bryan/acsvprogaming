@@ -45,6 +45,7 @@ const Navbar = () => {
             <Link to="/" className="text-gaming-white hover:text-gaming-red font-medium transition duration-200">Home</Link>
             <Link to="/reviews" className="text-gaming-white hover:text-gaming-red font-medium transition duration-200">Reviews</Link>
             <Link to="/news" className="text-gaming-white hover:text-gaming-red font-medium transition duration-200">News</Link>
+            <Link to="/tournaments" className="text-gaming-white hover:text-gaming-red font-medium transition duration-200">Tournaments</Link>
             <Link to="/forums" className="text-gaming-white hover:text-gaming-red font-medium transition duration-200">Forums</Link>
           </div>
 
@@ -81,6 +82,7 @@ const Navbar = () => {
             <Link to="/" className="text-gaming-white hover:text-gaming-red font-medium py-2 transition duration-200" onClick={toggleMenu}>Home</Link>
             <Link to="/reviews" className="text-gaming-white hover:text-gaming-red font-medium py-2 transition duration-200" onClick={toggleMenu}>Reviews</Link>
             <Link to="/news" className="text-gaming-white hover:text-gaming-red font-medium py-2 transition duration-200" onClick={toggleMenu}>News</Link>
+            <Link to="/tournaments" className="text-gaming-white hover:text-gaming-red font-medium py-2 transition duration-200" onClick={toggleMenu}>Tournaments</Link>
             <Link to="/forums" className="text-gaming-white hover:text-gaming-red font-medium py-2 transition duration-200" onClick={toggleMenu}>Forums</Link>
             {session ? (
               <>
