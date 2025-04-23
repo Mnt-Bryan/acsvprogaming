@@ -1,6 +1,6 @@
-
 import { Link } from "react-router-dom";
-import { Gamepad2, Youtube, Discord, ExternalLink } from "lucide-react";
+import { Gamepad2, Youtube, ExternalLink } from "lucide-react";
+import { DiscordLogoIcon } from "@radix-ui/react-icons";
 
 const Footer = () => {
   return (
@@ -38,7 +38,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="flex items-center hover:text-gaming-red transition duration-200"
                 >
-                  <Discord className="mr-2" size={18} />
+                  <DiscordLogoIcon className="mr-2" width={18} height={18} />
                   Discord
                 </a>
               </li>
@@ -109,4 +109,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
