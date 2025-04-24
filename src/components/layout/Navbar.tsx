@@ -36,7 +36,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Link to="/" className="flex items-center">
-              <img src="/lovable-uploads/3ab5c47a-1203-47d7-bb79-ad6a79718d36.png" alt="ACSV Logo" className="h-12" />
+              <img src="/lovable-uploads/487230a8-6dc7-49df-b507-18f55136722e.png" alt="ACSV Logo" className="h-12" />
             </Link>
           </div>
 

@@ -7,73 +7,80 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
+import MediaContent from "@/components/common/MediaContent";
 
-// Sample game reviews data
+// Updated game reviews data with real images and video IDs
 const gameReviews = [
   {
     id: 1,
-    title: "The Last of Us Part II",
-    image: "https://images.unsplash.com/photo-1627855997433-73ff15c1ff9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    title: "Final Fantasy VII Rebirth",
+    image: "https://image.api.playstation.com/vulcan/ap/rnd/202306/1219/65f60d54e44c50aac58d55913a364fd4edfc8ed4c0cb4331.jpg",
+    videoId: "4_ErhyQpIpA",
     rating: 4.8,
-    category: "Action-Adventure",
+    category: "RPG",
     platform: "PS5",
     reviewDate: "April 12, 2025",
-    excerpt: "A masterpiece that redefines narrative in gaming. The Last of Us Part II delivers an emotional and impactful experience.",
+    excerpt: "Square Enix delivers a masterpiece that expands on the Remake's foundation with an ambitious open world and refined combat system.",
     reviewerName: "Michael Johnson"
   },
   {
     id: 2,
-    title: "Halo Infinite",
-    image: "https://images.unsplash.com/photo-1597655601841-214a4cfe8b2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1789&q=80",
-    rating: 4.3,
-    category: "FPS",
-    platform: "Xbox Series X",
+    title: "Dragon's Dogma 2",
+    image: "https://assets-prd.ignimgs.com/2022/06/24/dragons-dogma-2-blog-1656043418068.jpg",
+    videoId: "oI9CdzhOFHU",
+    rating: 4.6,
+    category: "Action RPG",
+    platform: "Multi-platform",
     reviewDate: "April 8, 2025",
-    excerpt: "A return to form for the Halo franchise, with excellent multiplayer and an engaging campaign that fans will love.",
+    excerpt: "Capcom's long-awaited sequel is a triumphant return that pushes the boundaries of open-world action RPGs with its emergent gameplay systems.",
     reviewerName: "Sarah Williams"
   },
   {
     id: 3,
-    title: "Horizon Forbidden West",
-    image: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-    rating: 4.6,
+    title: "Elden Ring: Shadow of the Erdtree",
+    image: "https://image.api.playstation.com/vulcan/ap/rnd/202306/1301/54cee7f682fa612c3f71febab6e3ad19baa253ca9bfa4227.jpg",
+    videoId: "Sef-fffftl4",
+    rating: 4.9,
     category: "Action RPG",
-    platform: "PS5",
+    platform: "Multi-platform",
     reviewDate: "April 5, 2025",
-    excerpt: "Stunning visuals and improved gameplay mechanics make this sequel a must-play for fans of open-world action games.",
+    excerpt: "FromSoftware's massive expansion to the award-winning Elden Ring introduces a hauntingly beautiful new realm filled with challenging encounters.",
     reviewerName: "David Chen"
   },
   {
     id: 4,
-    title: "Elden Ring",
-    image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-    rating: 4.9,
-    category: "Action RPG",
-    platform: "Multi-platform",
+    title: "Senua's Saga: Hellblade II",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/2461850/ss_4c546336ee87aaae17b889166344e9fb5441759a.jpg",
+    videoId: "Q5DO9WWwR0Y",
+    rating: 4.5,
+    category: "Action-Adventure",
+    platform: "Xbox Series X/PC",
     reviewDate: "March 30, 2025",
-    excerpt: "A masterful collaboration between FromSoftware and George R.R. Martin that elevates the souls-like genre to new heights.",
+    excerpt: "Ninja Theory's sequel is a technical marvel that pushes the boundaries of next-gen storytelling with its unflinching look at mental health.",
     reviewerName: "Emma Taylor"
   },
   {
     id: 5,
-    title: "Star Wars Jedi: Survivor",
-    image: "https://images.unsplash.com/photo-1518406479695-812274898f78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-    rating: 4.5,
-    category: "Action-Adventure",
-    platform: "Multi-platform",
+    title: "Silent Hill 2 Remake",
+    image: "https://blog.playstation.com/tachyon/2022/10/6e296608a94ea9afe3eb764e11b5f18577307a48.jpg",
+    videoId: "3ZjWtAKlv24",
+    rating: 4.7,
+    category: "Horror",
+    platform: "PS5/PC",
     reviewDate: "March 25, 2025",
-    excerpt: "An excellent follow-up that builds upon its predecessor with refined combat and a compelling narrative.",
+    excerpt: "Bloober Team's reimagining of the horror classic preserves the psychological dread while modernizing the gameplay for a new generation.",
     reviewerName: "Marcus Reynolds"
   },
   {
     id: 6,
-    title: "Final Fantasy XVI",
-    image: "https://images.unsplash.com/photo-1566577134770-3d85bb3a9cc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-    rating: 4.7,
+    title: "Avowed",
+    image: "https://cdn.vox-cdn.com/thumbor/LqeS_nqA5gDzgMYOzH9qLrLDjZ0=/0x0:3840x2160/1200x675/filters:focal(1613x773:2227x1387)/cdn.vox-cdn.com/uploads/chorus_image/image/72941183/Screenshot_2024_01_18_184456.0.png",
+    videoId: "Uv8UUxTEpTU",
+    rating: 4.4,
     category: "RPG",
-    platform: "PS5",
+    platform: "Xbox Series X/PC",
     reviewDate: "March 20, 2025",
-    excerpt: "Square Enix delivers a dramatic, mature take on the Final Fantasy series with exceptional combat and storytelling.",
+    excerpt: "Obsidian's first-person RPG set in the world of Eora delivers a compelling narrative with deep character customization and moral choices.",
     reviewerName: "Jennifer Lopez"
   }
 ];
@@ -84,7 +91,7 @@ const ReviewsPage = () => {
   return (
     <MainLayout>
       {/* Hero Banner */}
-      <div className="bg-gaming-black bg-[url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80')] bg-cover bg-center bg-blend-overlay bg-opacity-70 py-20">
+      <div className="bg-gaming-black bg-[url('https://videogamer.com/wp-content/uploads/Game-Reviews-Header.jpg')] bg-cover bg-center bg-blend-overlay bg-opacity-70 py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gaming-white mb-4">Game Reviews</h1>
           <p className="text-xl text-gaming-light-gray max-w-2xl mx-auto">
@@ -164,11 +171,12 @@ const ReviewsPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {gameReviews.map((review) => (
                   <Card key={review.id} className="overflow-hidden bg-gaming-gray border-none hover:transform hover:-translate-y-1 transition duration-300">
-                    <div className="relative h-48">
-                      <img 
-                        src={review.image} 
-                        alt={review.title} 
-                        className="w-full h-full object-cover" 
+                    <div className="relative">
+                      <MediaContent 
+                        title={review.title}
+                        imageUrl={review.image}
+                        youtubeVideoId={review.videoId}
+                        aspectRatio="wide"
                       />
                       <div className="absolute top-3 right-3 bg-gaming-black/80 px-2 py-1 rounded flex items-center">
                         <Star className="text-yellow-400 mr-1" size={16} />
@@ -204,11 +212,12 @@ const ReviewsPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {gameReviews.slice(0, 3).map((review) => (
                   <Card key={review.id} className="overflow-hidden bg-gaming-gray border-none hover:transform hover:-translate-y-1 transition duration-300">
-                    <div className="relative h-48">
-                      <img 
-                        src={review.image} 
-                        alt={review.title} 
-                        className="w-full h-full object-cover" 
+                    <div className="relative">
+                      <MediaContent 
+                        title={review.title}
+                        imageUrl={review.image}
+                        youtubeVideoId={review.videoId}
+                        aspectRatio="wide"
                       />
                       <div className="absolute top-3 right-3 bg-gaming-black/80 px-2 py-1 rounded flex items-center">
                         <Star className="text-yellow-400 mr-1" size={16} />
@@ -239,13 +248,14 @@ const ReviewsPage = () => {
             
             <TabsContent value="new-releases" className="mt-0">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {gameReviews.slice(3, 6).map((review) => (
+                {gameReviews.slice(2, 5).map((review) => (
                   <Card key={review.id} className="overflow-hidden bg-gaming-gray border-none hover:transform hover:-translate-y-1 transition duration-300">
-                    <div className="relative h-48">
-                      <img 
-                        src={review.image} 
-                        alt={review.title} 
-                        className="w-full h-full object-cover" 
+                    <div className="relative">
+                      <MediaContent 
+                        title={review.title}
+                        imageUrl={review.image}
+                        youtubeVideoId={review.videoId}
+                        aspectRatio="wide"
                       />
                       <div className="absolute top-3 right-3 bg-gaming-black/80 px-2 py-1 rounded flex items-center">
                         <Star className="text-yellow-400 mr-1" size={16} />
@@ -276,13 +286,14 @@ const ReviewsPage = () => {
             
             <TabsContent value="indie" className="mt-0">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {gameReviews.slice(1, 4).map((review) => (
+                {gameReviews.slice(3, 6).map((review) => (
                   <Card key={review.id} className="overflow-hidden bg-gaming-gray border-none hover:transform hover:-translate-y-1 transition duration-300">
-                    <div className="relative h-48">
-                      <img 
-                        src={review.image} 
-                        alt={review.title} 
-                        className="w-full h-full object-cover" 
+                    <div className="relative">
+                      <MediaContent 
+                        title={review.title}
+                        imageUrl={review.image}
+                        youtubeVideoId={review.videoId}
+                        aspectRatio="wide"
                       />
                       <div className="absolute top-3 right-3 bg-gaming-black/80 px-2 py-1 rounded flex items-center">
                         <Star className="text-yellow-400 mr-1" size={16} />

@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { Youtube, ExternalLink } from "lucide-react";
 import { DiscordLogoIcon } from "@radix-ui/react-icons";
@@ -9,7 +10,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <img 
-              src="/lovable-uploads/a5c501d3-8241-4f24-bad2-42f891101aac.png" 
+              src="/lovable-uploads/487230a8-6dc7-49df-b507-18f55136722e.png" 
               alt="ACSV Logo" 
               className="h-16 mb-4" 
             />
