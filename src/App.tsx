@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -12,7 +13,6 @@ import NotFound from "./pages/NotFound";
 import AuthPage from "./pages/AuthPage";
 import ProfilePage from "./pages/ProfilePage";
 import TournamentsPage from "./pages/TournamentsPage";
-import AIAssistant from "./components/AIAssistant";
 import TournamentCategoriesPage from "./pages/TournamentCategoriesPage";
 
 const App = () => {
@@ -35,7 +35,6 @@ const App = () => {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <AIAssistant />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

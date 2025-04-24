@@ -1,26 +1,35 @@
 
 import MainLayout from "@/components/layout/MainLayout";
+import { Button } from "@/components/ui/button";
+import { ExternalLink } from "lucide-react";
 
 const TournamentCategoriesPage = () => {
-  // You might later fetch categories/tournament info from Supabase here.
+  const handleRegister = () => {
+    window.open('https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__gkdAedUNlg5N0xKRkJTNzkyOUJLWlFWNU40RzdIUC4u', '_blank');
+  };
+
   return (
     <MainLayout>
-      <div className="max-w-2xl mx-auto py-10 px-4">
-        <h2 className="text-2xl font-bold text-gaming-red mb-6">Tournament Categories</h2>
-        <ul className="space-y-4">
-          <li className="bg-gaming-gray rounded-lg p-4 text-white">
-            FIFA: Info about all local and online FIFA tournaments.
-          </li>
-          <li className="bg-gaming-gray rounded-lg p-4 text-white">
-            Call of Duty: Upcoming events, results, and leaderboards for COD tournaments.
-          </li>
-          <li className="bg-gaming-gray rounded-lg p-4 text-white">
-            League of Legends: Details on ACSV LoL tournaments and participation.
-          </li>
-          <li className="bg-gaming-gray rounded-lg p-4 text-white">
-            More games coming soon!
-          </li>
-        </ul>
+      <div className="max-w-7xl mx-auto py-10 px-4">
+        {/* Banner Image */}
+        <div className="mb-8">
+          <img 
+            src="/lovable-uploads/b0ef88a5-f2af-4f09-afe9-1310b9bb4f95.png"
+            alt="BIYA eSports Cup of Nations"
+            className="w-full max-w-4xl mx-auto rounded-lg shadow-lg"
+          />
+        </div>
+
+        {/* Registration Button */}
+        <div className="text-center">
+          <Button 
+            onClick={handleRegister}
+            className="bg-gaming-red hover:bg-red-700 text-white text-lg px-8 py-6 rounded-lg shadow-lg transition-all duration-300"
+          >
+            Register Now
+            <ExternalLink className="ml-2" />
+          </Button>
+        </div>
       </div>
     </MainLayout>
   );
