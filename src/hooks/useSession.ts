@@ -1,10 +1,11 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { Session, User } from "@supabase/supabase-js";
 
 export function useSession() {
-  const [session, setSession] = useState(null);
-  const [user, setUser] = useState(null);
+  const [session, setSession] = useState<Session | null>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     // Listen for auth events

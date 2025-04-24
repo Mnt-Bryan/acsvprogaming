@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { toast } from "sonner";
 
 type Profile = {
   id: string;
@@ -45,12 +47,42 @@ const ProfilePage = () => {
     if (error) {
       setError(error.message);
       setProfile(null);
+      toast.error("Failed to load profile");
     } else {
       setProfile(data);
       setUsername(data?.username || "");
-      setAvatar(data?.avatar_url || "");
+      
+      // Generate avatar if none exists
+      if (!data?.avatar_url) {
+        const generatedAvatar = generateAvatar(userId);
+        setAvatar(generatedAvatar);
+        // Save the generated avatar
+        updateAvatarInDatabase(userId, generatedAvatar);
+      } else {
+        setAvatar(data.avatar_url);
+      }
     }
     setLoading(false);
+  };
+
+  const generateAvatar = (userId: string) => {
+    // Create a deterministic avatar URL based on user ID
+    // Using DiceBear API for simple, consistent avatar generation
+    const style = ["adventurer", "avataaars", "bottts", "identicon", "initials"][
+      Math.abs(userId.charCodeAt(0) % 5)
+    ];
+    return `https://api.dicebear.com/7.x/${style}/svg?seed=${userId}`;
+  };
+
+  const updateAvatarInDatabase = async (userId: string, avatarUrl: string) => {
+    const { error } = await supabase
+      .from("profiles")
+      .update({ avatar_url: avatarUrl })
+      .eq("id", userId);
+    
+    if (error) {
+      console.error("Failed to save avatar:", error);
+    }
   };
 
   const handleUpdate = async (e: React.FormEvent) => {
@@ -65,9 +97,11 @@ const ProfilePage = () => {
       .maybeSingle();
     if (updateError) {
       setError(updateError.message);
+      toast.error("Failed to update profile");
     } else if (data) {
       setProfile(data);
       setEditing(false);
+      toast.success("Profile updated successfully");
     }
     setLoading(false);
   };
@@ -104,6 +138,14 @@ const ProfilePage = () => {
         <CardContent>
           {editing ? (
             <form onSubmit={handleUpdate} className="space-y-4">
+              <div className="flex justify-center mb-4">
+                <Avatar className="w-24 h-24">
+                  <AvatarImage src={avatar} alt="Avatar" className="object-cover" />
+                  <AvatarFallback className="bg-gaming-red text-white text-lg">
+                    {username?.charAt(0) || profile.email?.charAt(0) || "U"}
+                  </AvatarFallback>
+                </Avatar>
+              </div>
               <div className="space-y-2">
                 <Label htmlFor="username">Username</Label>
                 <Input
@@ -133,11 +175,14 @@ const ProfilePage = () => {
             </form>
           ) : (
             <div className="space-y-4">
-              {profile.avatar_url ? (
-                <img src={profile.avatar_url} alt="Avatar" className="w-24 h-24 rounded-full mx-auto object-cover" />
-              ) : (
-                <div className="w-24 h-24 mx-auto rounded-full bg-muted flex items-center justify-center text-gray-200">No Avatar</div>
-              )}
+              <div className="flex justify-center">
+                <Avatar className="w-24 h-24">
+                  <AvatarImage src={avatar} alt="Avatar" className="object-cover" />
+                  <AvatarFallback className="bg-gaming-red text-white text-lg">
+                    {username?.charAt(0) || profile.email?.charAt(0) || "U"}
+                  </AvatarFallback>
+                </Avatar>
+              </div>
               <div className="text-center text-lg font-semibold">{profile.username || "No username set"}</div>
               <div className="text-center text-sm text-gray-400">{profile.email || profile.phone}</div>
               <Button className="w-full" onClick={() => setEditing(true)}>

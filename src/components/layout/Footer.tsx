@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Youtube, ExternalLink } from "lucide-react";
+import { Youtube, ExternalLink, WhatsApp } from "lucide-react";
 import { DiscordLogoIcon } from "@radix-ui/react-icons";
 
 const Footer = () => {
@@ -90,12 +90,19 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4 text-gaming-red">Contact Us</h3>
             <ul className="space-y-2">
               <li className="flex items-center">
-                <span className="text-gaming-light-gray">Email:</span>
-                <a href="mailto:info@acsv.com" className="ml-2 hover:text-gaming-red transition duration-200">info@acsv.com</a>
+                <a 
+                  href="https://wa.me/657328842" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center hover:text-gaming-red transition duration-200"
+                >
+                  <WhatsApp className="mr-2" size={18} />
+                  <span>WhatsApp Support: 657328842</span>
+                </a>
               </li>
               <li className="flex items-center">
-                <span className="text-gaming-light-gray">Support:</span>
-                <a href="mailto:support@acsv.com" className="ml-2 hover:text-gaming-red transition duration-200">support@acsv.com</a>
+                <span className="text-gaming-light-gray">Email:</span>
+                <a href="mailto:info@acsv.com" className="ml-2 hover:text-gaming-red transition duration-200">info@acsv.com</a>
               </li>
             </ul>
           </div>

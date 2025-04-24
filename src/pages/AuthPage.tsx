@@ -5,6 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { toast } from "sonner";
 
 type AuthMode = "login" | "signup";
 
@@ -59,8 +60,10 @@ const AuthPage = () => {
     }
     if (res.error) {
       setErrorMsg(res.error.message);
+      toast.error(res.error.message);
     } else {
       setErrorMsg("");
+      toast.success(authMode === "signup" ? "Account created successfully!" : "Login successful!");
       // Redirect happens in onAuthStateChange
     }
     setLoading(false);
@@ -69,9 +72,29 @@ const AuthPage = () => {
   const handleGoogleSignIn = async () => {
     setErrorMsg("");
     setLoading(true);
-    const { error } = await supabase.auth.signInWithOAuth({ provider: "google" });
-    if (error) setErrorMsg(error.message);
-    setLoading(false);
+    
+    try {
+      const { data, error } = await supabase.auth.signInWithOAuth({ 
+        provider: "google",
+        options: {
+          redirectTo: window.location.origin + "/auth"
+        }
+      });
+      
+      if (error) {
+        setErrorMsg(error.message);
+        toast.error(error.message);
+        console.error("Google sign-in error:", error);
+      } else {
+        console.log("Google sign-in initiated:", data);
+      }
+    } catch (err) {
+      console.error("Unexpected error during Google sign-in:", err);
+      setErrorMsg("An unexpected error occurred. Please try again.");
+      toast.error("Failed to connect with Google. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
