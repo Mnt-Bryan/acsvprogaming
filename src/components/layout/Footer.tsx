@@ -1,6 +1,5 @@
-
 import { Link } from "react-router-dom";
-import { Youtube, ExternalLink, WhatsApp } from "lucide-react";
+import { Youtube, ExternalLink } from "lucide-react";
 import { DiscordLogoIcon } from "@radix-ui/react-icons";
 
 const Footer = () => {
@@ -96,7 +95,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="flex items-center hover:text-gaming-red transition duration-200"
                 >
-                  <WhatsApp className="mr-2" size={18} />
+                  <ExternalLink className="mr-2" size={18} />
                   <span>WhatsApp Support: 657328842</span>
                 </a>
               </li>
