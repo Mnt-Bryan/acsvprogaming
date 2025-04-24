@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import AuthPage from "./pages/AuthPage";
 import ProfilePage from "./pages/ProfilePage";
 import TournamentsPage from "./pages/TournamentsPage";
+import AboutPage from "./pages/AboutPage";
 
 const App = () => {
   const [queryClient] = useState(() => new QueryClient());
@@ -29,6 +30,7 @@ const App = () => {
             <Route path="/news" element={<NewsPage />} />
             <Route path="/forums" element={<ForumsPage />} />
             <Route path="/tournaments" element={<TournamentsPage />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/auth" element={<AuthPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="*" element={<NotFound />} />
