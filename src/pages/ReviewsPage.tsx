@@ -1,13 +1,9 @@
-
+import React, { useState } from 'react';
 import MainLayout from "@/components/layout/MainLayout";
-import { Card, CardContent } from "@/components/ui/card";
-import { Trophy, Star, Search } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState } from "react";
-import MediaContent from "@/components/common/MediaContent";
+import ReviewHero from '@/components/reviews/ReviewHero';
+import ReviewFilters from '@/components/reviews/ReviewFilters';
+import ReviewTabContent from '@/components/reviews/ReviewTabContent';
 
 const gameReviews = [
   {
@@ -89,67 +85,8 @@ const ReviewsPage = () => {
   
   return (
     <MainLayout>
-      <div className="bg-gaming-black bg-[url('https://videogamer.com/wp-content/uploads/Game-Reviews-Header.jpg')] bg-cover bg-center bg-blend-overlay bg-opacity-70 py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gaming-white mb-4">Game Reviews</h1>
-          <p className="text-xl text-gaming-light-gray max-w-2xl mx-auto">
-            Expert opinions, in-depth analysis, and ratings of the latest games across all platforms.
-          </p>
-        </div>
-      </div>
-      
-      <section className="py-8 bg-gaming-gray">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row gap-4 justify-between">
-            <div className="relative w-full md:w-1/3">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
-              <Input 
-                placeholder="Search games..." 
-                className="pl-10 bg-black/30 border-gaming-black text-white" 
-              />
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Select defaultValue="all">
-                <SelectTrigger className="w-full sm:w-[180px] bg-black/30 border-gaming-black text-white">
-                  <SelectValue placeholder="Platform" />
-                </SelectTrigger>
-                <SelectContent className="bg-gaming-gray text-white border-gaming-black">
-                  <SelectItem value="all">All Platforms</SelectItem>
-                  <SelectItem value="ps5">PlayStation 5</SelectItem>
-                  <SelectItem value="xbox">Xbox Series X/S</SelectItem>
-                  <SelectItem value="pc">PC</SelectItem>
-                  <SelectItem value="switch">Nintendo Switch</SelectItem>
-                </SelectContent>
-              </Select>
-              
-              <Select defaultValue="all">
-                <SelectTrigger className="w-full sm:w-[180px] bg-black/30 border-gaming-black text-white">
-                  <SelectValue placeholder="Genre" />
-                </SelectTrigger>
-                <SelectContent className="bg-gaming-gray text-white border-gaming-black">
-                  <SelectItem value="all">All Genres</SelectItem>
-                  <SelectItem value="action">Action</SelectItem>
-                  <SelectItem value="rpg">RPG</SelectItem>
-                  <SelectItem value="fps">FPS</SelectItem>
-                  <SelectItem value="adventure">Adventure</SelectItem>
-                  <SelectItem value="strategy">Strategy</SelectItem>
-                </SelectContent>
-              </Select>
-              
-              <Select defaultValue="recent">
-                <SelectTrigger className="w-full sm:w-[180px] bg-black/30 border-gaming-black text-white">
-                  <SelectValue placeholder="Sort By" />
-                </SelectTrigger>
-                <SelectContent className="bg-gaming-gray text-white border-gaming-black">
-                  <SelectItem value="recent">Most Recent</SelectItem>
-                  <SelectItem value="rating-high">Highest Rated</SelectItem>
-                  <SelectItem value="rating-low">Lowest Rated</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ReviewHero />
+      <ReviewFilters />
       
       <section className="py-10 bg-black">
         <div className="container mx-auto px-4">
@@ -164,154 +101,19 @@ const ReviewsPage = () => {
             </div>
             
             <TabsContent value="all" className="mt-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {gameReviews.map((review) => (
-                  <Card key={review.id} className="overflow-hidden bg-gaming-gray border-none hover:transform hover:-translate-y-1 transition duration-300">
-                    <div className="relative">
-                      <MediaContent 
-                        title={review.title}
-                        imageUrl={review.image}
-                        youtubeVideoId={review.videoId}
-                        aspectRatio="wide"
-                      />
-                      <div className="absolute top-3 right-3 bg-gaming-black/80 px-2 py-1 rounded flex items-center">
-                        <Star className="text-yellow-400 mr-1" size={16} />
-                        <span className="text-white font-bold">{review.rating}</span>
-                      </div>
-                      <div className="absolute top-3 left-3">
-                        <span className="bg-gaming-red text-white text-xs px-2 py-1 rounded font-medium">
-                          {review.platform}
-                        </span>
-                      </div>
-                    </div>
-                    <CardContent className="p-5">
-                      <div className="text-sm text-gaming-red mb-2 flex justify-between items-center">
-                        <span>{review.category}</span>
-                        <span>{review.reviewDate}</span>
-                      </div>
-                      <h3 className="text-xl font-bold text-white mb-2">{review.title}</h3>
-                      <p className="text-gaming-light-gray text-sm mb-4">{review.excerpt}</p>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-gaming-light-gray">By {review.reviewerName}</span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-              <div className="flex justify-center mt-12">
-                <Button className="bg-gaming-red hover:bg-red-700 text-white">Load More Reviews</Button>
-              </div>
+              <ReviewTabContent reviews={gameReviews} showLoadMore />
             </TabsContent>
             
             <TabsContent value="featured" className="mt-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {gameReviews.slice(0, 3).map((review) => (
-                  <Card key={review.id} className="overflow-hidden bg-gaming-gray border-none hover:transform hover:-translate-y-1 transition duration-300">
-                    <div className="relative">
-                      <MediaContent 
-                        title={review.title}
-                        imageUrl={review.image}
-                        youtubeVideoId={review.videoId}
-                        aspectRatio="wide"
-                      />
-                      <div className="absolute top-3 right-3 bg-gaming-black/80 px-2 py-1 rounded flex items-center">
-                        <Star className="text-yellow-400 mr-1" size={16} />
-                        <span className="text-white font-bold">{review.rating}</span>
-                      </div>
-                      <div className="absolute top-3 left-3">
-                        <span className="bg-gaming-red text-white text-xs px-2 py-1 rounded font-medium">
-                          {review.platform}
-                        </span>
-                      </div>
-                    </div>
-                    <CardContent className="p-5">
-                      <div className="text-sm text-gaming-red mb-2 flex justify-between items-center">
-                        <span>{review.category}</span>
-                        <span>{review.reviewDate}</span>
-                      </div>
-                      <h3 className="text-xl font-bold text-white mb-2">{review.title}</h3>
-                      <p className="text-gaming-light-gray text-sm mb-4">{review.excerpt}</p>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-gaming-light-gray">By {review.reviewerName}</span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+              <ReviewTabContent reviews={gameReviews.slice(0, 3)} />
             </TabsContent>
             
             <TabsContent value="new-releases" className="mt-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {gameReviews.slice(2, 5).map((review) => (
-                  <Card key={review.id} className="overflow-hidden bg-gaming-gray border-none hover:transform hover:-translate-y-1 transition duration-300">
-                    <div className="relative">
-                      <MediaContent 
-                        title={review.title}
-                        imageUrl={review.image}
-                        youtubeVideoId={review.videoId}
-                        aspectRatio="wide"
-                      />
-                      <div className="absolute top-3 right-3 bg-gaming-black/80 px-2 py-1 rounded flex items-center">
-                        <Star className="text-yellow-400 mr-1" size={16} />
-                        <span className="text-white font-bold">{review.rating}</span>
-                      </div>
-                      <div className="absolute top-3 left-3">
-                        <span className="bg-gaming-red text-white text-xs px-2 py-1 rounded font-medium">
-                          {review.platform}
-                        </span>
-                      </div>
-                    </div>
-                    <CardContent className="p-5">
-                      <div className="text-sm text-gaming-red mb-2 flex justify-between items-center">
-                        <span>{review.category}</span>
-                        <span>{review.reviewDate}</span>
-                      </div>
-                      <h3 className="text-xl font-bold text-white mb-2">{review.title}</h3>
-                      <p className="text-gaming-light-gray text-sm mb-4">{review.excerpt}</p>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-gaming-light-gray">By {review.reviewerName}</span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+              <ReviewTabContent reviews={gameReviews.slice(2, 5)} />
             </TabsContent>
             
             <TabsContent value="indie" className="mt-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {gameReviews.slice(3, 6).map((review) => (
-                  <Card key={review.id} className="overflow-hidden bg-gaming-gray border-none hover:transform hover:-translate-y-1 transition duration-300">
-                    <div className="relative">
-                      <MediaContent 
-                        title={review.title}
-                        imageUrl={review.image}
-                        youtubeVideoId={review.videoId}
-                        aspectRatio="wide"
-                      />
-                      <div className="absolute top-3 right-3 bg-gaming-black/80 px-2 py-1 rounded flex items-center">
-                        <Star className="text-yellow-400 mr-1" size={16} />
-                        <span className="text-white font-bold">{review.rating}</span>
-                      </div>
-                      <div className="absolute top-3 left-3">
-                        <span className="bg-gaming-red text-white text-xs px-2 py-1 rounded font-medium">
-                          {review.platform}
-                        </span>
-                      </div>
-                    </div>
-                    <CardContent className="p-5">
-                      <div className="text-sm text-gaming-red mb-2 flex justify-between items-center">
-                        <span>{review.category}</span>
-                        <span>{review.reviewDate}</span>
-                      </div>
-                      <h3 className="text-xl font-bold text-white mb-2">{review.title}</h3>
-                      <p className="text-gaming-light-gray text-sm mb-4">{review.excerpt}</p>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-gaming-light-gray">By {review.reviewerName}</span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+              <ReviewTabContent reviews={gameReviews.slice(3, 6)} />
             </TabsContent>
           </Tabs>
         </div>
