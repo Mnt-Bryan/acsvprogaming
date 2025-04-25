@@ -1,32 +1,16 @@
 
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useSession } from "@/hooks/useSession";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { session, user } = useSession();
-  const navigate = useNavigate();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const handleJoin = () => {
-    navigate("/auth");
-    setIsMenuOpen(false);
-  };
-
-  const handleProfile = () => {
-    navigate("/profile");
-    setIsMenuOpen(false);
-  };
-
-  const handleLogout = async () => {
-    await import("@/integrations/supabase/client").then(({ supabase }) =>
-      supabase.auth.signOut()
-    );
-    navigate("/auth");
+  const handleJoinWhatsApp = () => {
+    window.open("https://chat.whatsapp.com/GYHGkPEIbkn4NwuRVDA6SJ", "_blank");
     setIsMenuOpen(false);
   };
 
@@ -50,20 +34,9 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:flex items-center gap-4">
-            {session ? (
-              <>
-                <Button className="bg-gaming-gray text-white" onClick={handleProfile}>
-                  Profile
-                </Button>
-                <Button className="bg-gaming-red text-white" onClick={handleLogout}>
-                  Logout
-                </Button>
-              </>
-            ) : (
-              <Button className="bg-gaming-red hover:bg-red-700 text-white" onClick={handleJoin}>
-                Join ACSV
-              </Button>
-            )}
+            <Button className="bg-gaming-red hover:bg-red-700 text-white" onClick={handleJoinWhatsApp}>
+              Join ACSV
+            </Button>
           </div>
 
           <div className="md:hidden">
@@ -82,20 +55,9 @@ const Navbar = () => {
           <Link to="/tournaments" className="text-gaming-white hover:text-gaming-red font-medium py-2 transition duration-200" onClick={() => setIsMenuOpen(false)}>Tournaments</Link>
           <Link to="/about" className="text-gaming-white hover:text-gaming-red font-medium py-2 transition duration-200" onClick={() => setIsMenuOpen(false)}>About</Link>
           <Link to="/forums" className="text-gaming-white hover:text-gaming-red font-medium py-2 transition duration-200" onClick={() => setIsMenuOpen(false)}>Forums</Link>
-          {session ? (
-            <>
-              <Button className="w-full bg-gaming-gray text-white" onClick={handleProfile}>
-                Profile
-              </Button>
-              <Button className="w-full bg-gaming-red text-white" onClick={handleLogout}>
-                Logout
-              </Button>
-            </>
-          ) : (
-            <Button className="bg-gaming-red hover:bg-red-700 text-white w-full" onClick={handleJoin}>
-              Join ACSV
-            </Button>
-          )}
+          <Button className="w-full bg-gaming-red hover:bg-red-700 text-white" onClick={handleJoinWhatsApp}>
+            Join ACSV
+          </Button>
         </div>
       </div>
     </nav>

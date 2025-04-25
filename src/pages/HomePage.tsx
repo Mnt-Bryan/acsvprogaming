@@ -63,6 +63,10 @@ const latestNews = [
 ];
 
 const HomePage = () => {
+  const handleJoinWhatsApp = () => {
+    window.open("https://chat.whatsapp.com/GYHGkPEIbkn4NwuRVDA6SJ", "_blank");
+  };
+
   return (
     <MainLayout>
       {/* Hero Section */}
@@ -231,8 +235,8 @@ const HomePage = () => {
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
             Connect with fellow gamers, share your experiences, and stay updated with the latest in gaming.
           </p>
-          <Button size="lg" className="bg-white text-gaming-red hover:bg-gray-100">
-            Sign Up Now
+          <Button size="lg" className="bg-white text-gaming-red hover:bg-gray-100" onClick={handleJoinWhatsApp}>
+            Join Our WhatsApp Group
           </Button>
         </div>
       </section>

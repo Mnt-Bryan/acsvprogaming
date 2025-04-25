@@ -10,8 +10,6 @@ import ReviewsPage from "./pages/ReviewsPage";
 import NewsPage from "./pages/NewsPage";
 import ForumsPage from "./pages/ForumsPage";
 import NotFound from "./pages/NotFound";
-import AuthPage from "./pages/AuthPage";
-import ProfilePage from "./pages/ProfilePage";
 import TournamentsPage from "./pages/TournamentsPage";
 import AboutPage from "./pages/AboutPage";
 
@@ -31,8 +29,6 @@ const App = () => {
             <Route path="/forums" element={<ForumsPage />} />
             <Route path="/tournaments" element={<TournamentsPage />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/auth" element={<AuthPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
