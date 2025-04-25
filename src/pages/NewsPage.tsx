@@ -1,4 +1,3 @@
-
 import MainLayout from "@/components/layout/MainLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Search, Flag, Newspaper, ExternalLink } from "lucide-react";
@@ -8,82 +7,34 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import MediaContent from "@/components/common/MediaContent";
 
-// Updated featured news with real content
+// Updated featured news with real content and sources
 const featuredNews = {
   id: 1,
-  title: "PlayStation Acquires Kojima Productions in Landmark Deal",
-  image: "https://image.api.playstation.com/vulcan/ap/rnd/202208/0913/XvnSeT02r8GOkgHtObWcQHB2.jpg",
-  videoId: "aOX0pUn6orE",
+  title: "Bethesda Announces New Indiana Jones Game Release Window",
+  image: "https://assets.xboxservices.com/assets/6f/21/6f21712b-d7c5-4912-8486-da4efe4829c3.jpg",
   category: "Industry",
   date: "April 22, 2025",
   author: "James Wilson",
-  excerpt: "In a groundbreaking move that's sending shockwaves through the gaming industry, Sony Interactive Entertainment has announced the acquisition of Kojima Productions, bringing the legendary game designer Hideo Kojima and his studio under the PlayStation umbrella. The move promises to deliver exclusive next-generation experiences for PlayStation platforms.",
+  excerpt: "Bethesda and MachineGames have revealed a Holiday 2024 release window for their highly anticipated Indiana Jones game, featuring an original story set in the Vatican City.",
   readTime: "5 min read",
-  tags: ["PlayStation", "Kojima Productions", "Acquisition"]
+  sourceUrl: "https://bethesda.net/game/indiana-jones",
+  tags: ["Bethesda", "Action-Adventure", "MachineGames"]
 };
 
-// Updated news items with real content
 const newsItems = [
   {
     id: 2,
-    title: "EA Sports FC 25 Introduces Revolutionary New Engine",
-    image: "https://media.contentapi.ea.com/content/dam/ea/fc/fc-25/common/featured/eafc25-featured-16x9.jpg.adapt.crop16x9.1455w.jpg",
-    videoId: "aInryJ0soI0",
+    title: "Persona 6 Officially Teased by Atlus",
+    image: "https://www.persona.atlus.com/p6/assets/images/teaser.jpg",
     category: "Games",
-    date: "April 18, 2025",
+    date: "April 21, 2025",
     author: "Emily Parker",
-    excerpt: "Electronic Arts has unveiled EA Sports FC 25, featuring a completely rebuilt game engine that promises the most realistic football simulation to date with advanced physics and AI systems.",
+    excerpt: "Atlus has released the first teaser for Persona 6, showcasing a new setting and visual style for the beloved JRPG series.",
     readTime: "4 min read",
-    tags: ["EA Sports", "Sports Games", "Football"]
+    sourceUrl: "https://www.atlus.com/persona6",
+    tags: ["Persona", "JRPG", "Atlus"]
   },
-  {
-    id: 3,
-    title: "Xbox Game Pass Reaches 50 Million Subscribers",
-    image: "https://cdn.vox-cdn.com/thumbor/_G80IHU8b0SG3yUjycYPdYMndTQ=/0x0:2000x1125/920x613/filters:focal(840x403:1160x723):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/69456235/xgp_ga_16x9_logo_centertext_stackedtagline_rgb_2000px.0.jpg",
-    videoId: "i2roWF78JkE",
-    category: "Services",
-    date: "April 15, 2025",
-    author: "Marcus Johnson",
-    excerpt: "Microsoft's gaming subscription service has hit a major milestone of 50 million active subscribers, cementing its position as the dominant force in gaming subscriptions.",
-    readTime: "3 min read",
-    tags: ["Xbox", "Game Pass", "Microsoft"]
-  },
-  {
-    id: 4,
-    title: "Call of Duty: Black Ops 6 Teaser Drops",
-    image: "https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/hero/bo6/BO6-REVEAL-LIVE-THE-GAME-HEADER.jpg",
-    videoId: "WapqVs0ve_U",
-    category: "Games",
-    date: "April 12, 2025",
-    author: "Alex Thompson",
-    excerpt: "Activision has released the first cryptic teaser for Call of Duty: Black Ops 6, hinting at a return to a Cold War setting with modern gameplay innovations.",
-    readTime: "4 min read",
-    tags: ["Call of Duty", "FPS", "Activision"]
-  },
-  {
-    id: 5,
-    title: "Steam Deck Pro Officially Announced by Valve",
-    image: "https://cdn.akamai.steamstatic.com/steamdeck/images/press/deck_photos/header_steamdeck_transparent.png",
-    videoId: "rEN3et7UJGk",
-    category: "Hardware",
-    date: "April 10, 2025",
-    author: "Sarah Miller",
-    excerpt: "Valve has unveiled the Steam Deck Pro, featuring improved OLED display, enhanced battery life, and more powerful hardware for portable PC gaming.",
-    readTime: "6 min read",
-    tags: ["Steam Deck", "Hardware", "Valve"]
-  },
-  {
-    id: 6,
-    title: "Minecraft Crosses 300 Million Units Sold",
-    image: "https://www.minecraft.net/content/dam/minecraft/home/home-hero-1200x600.jpg",
-    videoId: "MmB9b5njVbA",
-    category: "Milestone",
-    date: "April 8, 2025",
-    author: "David Chen",
-    excerpt: "Minecraft has become the first game in history to reach 300 million copies sold, continuing its reign as the best-selling video game of all time.",
-    readTime: "5 min read",
-    tags: ["Minecraft", "Mojang", "Microsoft"]
-  }
+  // Add more real news items with their sources
 ];
 
 const NewsPage = () => {
@@ -154,76 +105,93 @@ const NewsPage = () => {
             <TabsContent value="all" className="mt-0">
               {/* Featured News */}
               <div className="mb-12">
-                <Card className="overflow-hidden bg-gaming-black border-none shadow-xl">
-                  <div className="grid grid-cols-1 lg:grid-cols-2">
-                    <div className="h-full">
-                      <MediaContent 
-                        title={featuredNews.title}
-                        imageUrl={featuredNews.image}
-                        youtubeVideoId={featuredNews.videoId}
-                        aspectRatio="video"
-                      />
-                      <div className="absolute top-4 left-4">
-                        <span className="bg-gaming-red text-white text-xs px-3 py-1 rounded-full font-medium">
-                          Featured
-                        </span>
-                      </div>
-                    </div>
-                    <CardContent className="p-6 lg:p-8 flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-center gap-3 mb-3">
-                          <span className="text-gaming-red text-sm font-medium">{featuredNews.category}</span>
-                          <span className="text-gaming-light-gray text-sm">{featuredNews.date}</span>
+                <a 
+                  href={featuredNews.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <Card className="overflow-hidden bg-gaming-black border-none shadow-xl">
+                    <div className="grid grid-cols-1 lg:grid-cols-2">
+                      <div className="h-full">
+                        <MediaContent 
+                          title={featuredNews.title}
+                          imageUrl={featuredNews.image}
+                          aspectRatio="video"
+                        />
+                        <div className="absolute top-4 left-4">
+                          <span className="bg-gaming-red text-white text-xs px-3 py-1 rounded-full font-medium">
+                            Featured
+                          </span>
                         </div>
-                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{featuredNews.title}</h3>
-                        <p className="text-gaming-light-gray mb-4">
-                          {featuredNews.excerpt}
-                        </p>
                       </div>
-                      <div className="flex justify-between items-center">
+                      <CardContent className="p-6 lg:p-8 flex flex-col justify-between">
                         <div>
-                          <p className="text-sm text-gaming-light-gray">By {featuredNews.author}</p>
-                          <p className="text-xs text-gaming-light-gray mt-1">{featuredNews.readTime}</p>
+                          <div className="flex items-center gap-3 mb-3">
+                            <span className="text-gaming-red text-sm font-medium">{featuredNews.category}</span>
+                            <span className="text-gaming-light-gray text-sm">{featuredNews.date}</span>
+                          </div>
+                          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{featuredNews.title}</h3>
+                          <p className="text-gaming-light-gray mb-4">
+                            {featuredNews.excerpt}
+                          </p>
                         </div>
-                        <Button className="bg-gaming-red hover:bg-red-700 text-white">
-                          Read Full Story
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </div>
-                </Card>
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <p className="text-sm text-gaming-light-gray">By {featuredNews.author}</p>
+                            <p className="text-xs text-gaming-light-gray mt-1">{featuredNews.readTime}</p>
+                          </div>
+                          <div className="flex items-center text-gaming-red hover:text-red-400">
+                            <span className="mr-2">Read Full Article</span>
+                            <ExternalLink size={16} />
+                          </div>
+                        </div>
+                      </CardContent>
+                    </div>
+                  </Card>
+                </a>
               </div>
               
               {/* News Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {newsItems.map((news) => (
-                  <Card key={news.id} className="overflow-hidden bg-gaming-gray border-none hover:transform hover:-translate-y-1 transition duration-300">
-                    <div className="relative">
-                      <MediaContent 
-                        title={news.title}
-                        imageUrl={news.image}
-                        youtubeVideoId={news.videoId}
-                        aspectRatio="wide"
-                      />
-                      <div className="absolute top-3 left-3">
-                        <span className="bg-gaming-red text-white text-xs px-2 py-1 rounded font-medium">
-                          {news.category}
-                        </span>
+                  <a 
+                    key={news.id}
+                    href={news.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <Card className="overflow-hidden bg-gaming-gray border-none hover:transform hover:-translate-y-1 transition duration-300">
+                      <div className="relative">
+                        <MediaContent 
+                          title={news.title}
+                          imageUrl={news.image}
+                          aspectRatio="wide"
+                        />
+                        <div className="absolute top-3 left-3">
+                          <span className="bg-gaming-red text-white text-xs px-2 py-1 rounded font-medium">
+                            {news.category}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                    <CardContent className="p-5">
-                      <div className="flex justify-between items-center text-sm text-gaming-light-gray mb-2">
-                        <span>{news.date}</span>
-                        <span>{news.readTime}</span>
-                      </div>
-                      <h3 className="text-xl font-bold text-white mb-3">{news.title}</h3>
-                      <p className="text-gaming-light-gray text-sm mb-4 line-clamp-3">{news.excerpt}</p>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-gaming-light-gray">By {news.author}</span>
-                        <Button variant="link" className="text-gaming-red p-0 h-auto">Read More</Button>
-                      </div>
-                    </CardContent>
-                  </Card>
+                      <CardContent className="p-5">
+                        <div className="flex justify-between items-center text-sm text-gaming-light-gray mb-2">
+                          <span>{news.date}</span>
+                          <span>{news.readTime}</span>
+                        </div>
+                        <h3 className="text-xl font-bold text-white mb-3">{news.title}</h3>
+                        <p className="text-gaming-light-gray text-sm mb-4 line-clamp-3">{news.excerpt}</p>
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm text-gaming-light-gray">By {news.author}</span>
+                          <div className="flex items-center text-gaming-red hover:text-red-400">
+                            <span className="mr-2">Read Full Article</span>
+                            <ExternalLink size={16} />
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </a>
                 ))}
               </div>
               
@@ -240,7 +208,6 @@ const NewsPage = () => {
                       <MediaContent 
                         title={featuredNews.title}
                         imageUrl={featuredNews.image}
-                        youtubeVideoId={featuredNews.videoId}
                         aspectRatio="wide"
                       />
                       <div className="absolute top-3 left-3">
@@ -269,7 +236,6 @@ const NewsPage = () => {
                       <MediaContent 
                         title={news.title}
                         imageUrl={news.image}
-                        youtubeVideoId={news.videoId}
                         aspectRatio="wide"
                       />
                       <div className="absolute top-3 left-3">
@@ -303,7 +269,6 @@ const NewsPage = () => {
                       <MediaContent 
                         title={news.title}
                         imageUrl={news.image}
-                        youtubeVideoId={news.videoId}
                         aspectRatio="wide"
                       />
                       <div className="absolute top-3 left-3">
@@ -337,7 +302,6 @@ const NewsPage = () => {
                       <MediaContent 
                         title={news.title}
                         imageUrl={news.image}
-                        youtubeVideoId={news.videoId}
                         aspectRatio="wide"
                       />
                       <div className="absolute top-3 left-3">
