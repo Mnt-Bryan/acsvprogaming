@@ -1,4 +1,3 @@
-
 import MainLayout from "@/components/layout/MainLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -7,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Search, MessageSquare, Flag, Users, Star, Trophy, ExternalLink, Info } from "lucide-react";
+import CreateThreadDialog from "@/components/forums/CreateThreadDialog";
 
 // Sample forums data
 const popularThreads = [
@@ -165,6 +165,10 @@ const forumCategories = [
 ];
 
 const ForumsPage = () => {
+  const handleCreateThread = (threadData: { title: string; content: string; category: string }) => {
+    console.log("New thread created:", threadData);
+  };
+
   return (
     <MainLayout>
       {/* Hero Banner */}
@@ -175,7 +179,7 @@ const ForumsPage = () => {
             Join discussions with fellow gamers, share your experiences, and become part of our thriving community.
           </p>
           <div className="mt-8">
-            <Button className="bg-gaming-red hover:bg-red-700 text-white">Start a New Thread</Button>
+            <CreateThreadDialog onThreadCreate={handleCreateThread} />
           </div>
         </div>
       </div>

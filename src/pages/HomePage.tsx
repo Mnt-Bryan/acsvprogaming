@@ -90,56 +90,47 @@ const HomePage = () => {
         
         <div className="container mx-auto px-4 -mt-16 md:-mt-24 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="bg-gaming-black border-gaming-red border-t-4 shadow-lg hover:transform hover:-translate-y-1 transition duration-300">
-              <CardContent className="pt-6">
-                <div className="text-gaming-red mb-4 flex justify-center">
-                  <Gamepad2 size={36} />
-                </div>
-                <h3 className="text-xl font-bold text-gaming-white text-center mb-2">Game Reviews</h3>
-                <p className="text-gaming-light-gray text-center mb-4">
-                  Expert reviews on the latest and greatest games across all platforms.
-                </p>
-                <div className="text-center">
-                  <Link to="/reviews" className="text-gaming-red hover:text-red-400 font-medium">
-                    Read Reviews
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
+            <Link to="/reviews">
+              <Card className="bg-gaming-black border-gaming-red border-t-4 shadow-lg hover:transform hover:-translate-y-1 transition duration-300">
+                <CardContent className="pt-6">
+                  <div className="text-gaming-red mb-4 flex justify-center">
+                    <Gamepad2 size={36} />
+                  </div>
+                  <h3 className="text-xl font-bold text-gaming-white text-center mb-2">Game Reviews</h3>
+                  <p className="text-gaming-light-gray text-center mb-4">
+                    Expert reviews on the latest and greatest games across all platforms.
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
             
-            <Card className="bg-gaming-black border-gaming-red border-t-4 shadow-lg hover:transform hover:-translate-y-1 transition duration-300">
-              <CardContent className="pt-6">
-                <div className="text-gaming-red mb-4 flex justify-center">
-                  <Newspaper size={36} />
-                </div>
-                <h3 className="text-xl font-bold text-gaming-white text-center mb-2">Latest News</h3>
-                <p className="text-gaming-light-gray text-center mb-4">
-                  Stay updated with breaking gaming news and industry developments.
-                </p>
-                <div className="text-center">
-                  <Link to="/news" className="text-gaming-red hover:text-red-400 font-medium">
-                    Read News
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
+            <Link to="/news">
+              <Card className="bg-gaming-black border-gaming-red border-t-4 shadow-lg hover:transform hover:-translate-y-1 transition duration-300">
+                <CardContent className="pt-6">
+                  <div className="text-gaming-red mb-4 flex justify-center">
+                    <Newspaper size={36} />
+                  </div>
+                  <h3 className="text-xl font-bold text-gaming-white text-center mb-2">Latest News</h3>
+                  <p className="text-gaming-light-gray text-center mb-4">
+                    Stay updated with breaking gaming news and industry developments.
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
             
-            <Card className="bg-gaming-black border-gaming-red border-t-4 shadow-lg hover:transform hover:-translate-y-1 transition duration-300">
-              <CardContent className="pt-6">
-                <div className="text-gaming-red mb-4 flex justify-center">
-                  <MessageSquare size={36} />
-                </div>
-                <h3 className="text-xl font-bold text-gaming-white text-center mb-2">Community Forums</h3>
-                <p className="text-gaming-light-gray text-center mb-4">
-                  Join discussions with gamers from all around the world.
-                </p>
-                <div className="text-center">
-                  <Link to="/forums" className="text-gaming-red hover:text-red-400 font-medium">
-                    Join Forums
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
+            <Link to="/forums">
+              <Card className="bg-gaming-black border-gaming-red border-t-4 shadow-lg hover:transform hover:-translate-y-1 transition duration-300">
+                <CardContent className="pt-6">
+                  <div className="text-gaming-red mb-4 flex justify-center">
+                    <MessageSquare size={36} />
+                  </div>
+                  <h3 className="text-xl font-bold text-gaming-white text-center mb-2">Community Forums</h3>
+                  <p className="text-gaming-light-gray text-center mb-4">
+                    Join discussions with gamers from all around the world.
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
           </div>
         </div>
       </section>

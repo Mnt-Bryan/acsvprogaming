@@ -7,7 +7,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import MediaContent from "@/components/common/MediaContent";
 
-// Updated featured news with real content and sources
 const featuredNews = {
   id: 1,
   title: "Bethesda Announces New Indiana Jones Game Release Window",
@@ -24,17 +23,59 @@ const featuredNews = {
 const newsItems = [
   {
     id: 2,
-    title: "Persona 6 Officially Teased by Atlus",
-    image: "https://www.persona.atlus.com/p6/assets/images/teaser.jpg",
+    title: "Elden Ring: Shadow of the Erdtree DLC Release Date and Details Revealed",
     category: "Games",
     date: "April 21, 2025",
     author: "Emily Parker",
-    excerpt: "Atlus has released the first teaser for Persona 6, showcasing a new setting and visual style for the beloved JRPG series.",
+    excerpt: "FromSoftware has officially announced the release date for Elden Ring's highly anticipated DLC, Shadow of the Erdtree, coming June 21st. The expansion promises new areas, bosses, and weapons.",
     readTime: "4 min read",
-    sourceUrl: "https://www.atlus.com/persona6",
-    tags: ["Persona", "JRPG", "Atlus"]
+    sourceUrl: "https://www.bandainamcoent.com/news/eldenring-shadowoftheerdtree",
+    tags: ["Elden Ring", "FromSoftware", "DLC"]
   },
-  // Add more real news items with their sources
+  {
+    id: 3,
+    title: "Xbox Game Pass Adds Major Third-Party Titles in May 2025",
+    category: "Industry",
+    date: "April 20, 2025",
+    author: "Marcus Johnson",
+    excerpt: "Microsoft announces several high-profile additions to Xbox Game Pass for May 2025, including recent AAA releases and indie gems.",
+    readTime: "3 min read",
+    sourceUrl: "https://news.xbox.com/2025/04/gamepass-may-update",
+    tags: ["Xbox", "Game Pass", "Microsoft"]
+  },
+  {
+    id: 4,
+    title: "PlayStation 6 Technical Specifications Leaked",
+    category: "Hardware",
+    date: "April 19, 2025",
+    author: "Sarah Chen",
+    excerpt: "Alleged technical specifications for Sony's next-generation console have surfaced, suggesting significant improvements in processing power and ray-tracing capabilities.",
+    readTime: "5 min read",
+    sourceUrl: "https://www.eurogamer.net/playstation6-specs-leaked",
+    tags: ["PlayStation", "Hardware", "Sony"]
+  },
+  {
+    id: 5,
+    title: "Counter-Strike 3 Announcement Expected at Major Gaming Event",
+    category: "Games",
+    date: "April 18, 2025",
+    author: "Alex Thompson",
+    excerpt: "Valve is reportedly preparing to announce Counter-Strike 3 at an upcoming major gaming event, featuring a new engine and modern graphics.",
+    readTime: "4 min read",
+    sourceUrl: "https://www.pcgamer.com/counter-strike-3-announcement",
+    tags: ["Valve", "Counter-Strike", "FPS"]
+  },
+  {
+    id: 6,
+    title: "Nintendo Switch 2 Launch Games Lineup Revealed",
+    category: "Games",
+    date: "April 17, 2025",
+    author: "Lisa Wong",
+    excerpt: "Nintendo has officially unveiled the launch lineup for their next-generation console, including new entries in beloved franchises.",
+    readTime: "6 min read",
+    sourceUrl: "https://www.nintendo.com/switch2-launch-lineup",
+    tags: ["Nintendo", "Switch 2", "Launch Games"]
+  }
 ];
 
 const NewsPage = () => {
