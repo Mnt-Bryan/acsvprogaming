@@ -1,3 +1,4 @@
+
 import MainLayout from "@/components/layout/MainLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Trophy, Star, Search } from "lucide-react";
@@ -18,7 +19,8 @@ const gameReviews = [
     platform: "PS5",
     reviewDate: "April 12, 2025",
     excerpt: "Square Enix delivers a masterpiece that expands on the Remake's foundation with an ambitious open world and refined combat system.",
-    reviewerName: "Michael Johnson"
+    reviewerName: "Michael Johnson",
+    videoId: null
   },
   {
     id: 2,
@@ -29,7 +31,8 @@ const gameReviews = [
     platform: "Multi-platform",
     reviewDate: "April 8, 2025",
     excerpt: "Capcom's long-awaited sequel is a triumphant return that pushes the boundaries of open-world action RPGs with its emergent gameplay systems.",
-    reviewerName: "Sarah Williams"
+    reviewerName: "Sarah Williams",
+    videoId: null
   },
   {
     id: 3,
@@ -40,7 +43,8 @@ const gameReviews = [
     platform: "Multi-platform",
     reviewDate: "April 5, 2025",
     excerpt: "FromSoftware's massive expansion to the award-winning Elden Ring introduces a hauntingly beautiful new realm filled with challenging encounters.",
-    reviewerName: "David Chen"
+    reviewerName: "David Chen",
+    videoId: null
   },
   {
     id: 4,
@@ -51,7 +55,8 @@ const gameReviews = [
     platform: "Xbox Series X/PC",
     reviewDate: "March 30, 2025",
     excerpt: "Ninja Theory's sequel is a technical marvel that pushes the boundaries of next-gen storytelling with its unflinching look at mental health.",
-    reviewerName: "Emma Taylor"
+    reviewerName: "Emma Taylor",
+    videoId: null
   },
   {
     id: 5,
@@ -62,7 +67,8 @@ const gameReviews = [
     platform: "PS5/PC",
     reviewDate: "March 25, 2025",
     excerpt: "Bloober Team's reimagining of the horror classic preserves the psychological dread while modernizing the gameplay for a new generation.",
-    reviewerName: "Marcus Reynolds"
+    reviewerName: "Marcus Reynolds",
+    videoId: null
   },
   {
     id: 6,
@@ -73,7 +79,8 @@ const gameReviews = [
     platform: "Xbox Series X/PC",
     reviewDate: "March 20, 2025",
     excerpt: "Obsidian's first-person RPG set in the world of Eora delivers a compelling narrative with deep character customization and moral choices.",
-    reviewerName: "Jennifer Lopez"
+    reviewerName: "Jennifer Lopez",
+    videoId: null
   }
 ];
 
