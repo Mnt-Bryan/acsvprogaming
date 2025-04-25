@@ -11,24 +11,21 @@ const featuredGames = [
     title: "GTA 6 Release Window Announced",
     image: "https://cdn.vox-cdn.com/thumbor/s3nNXrdRt5nhmq8CDY9Qpt9guag=/0x0:1920x1080/1400x933/filters:focal(940x401:1231x692):no_upscale()/cdn.vox-cdn.com/uploads/chorus_image/image/72905011/GTA_6.0.jpeg",
     rating: 4.9,
-    category: "News",
-    sourceUrl: "https://www.ign.com/articles/gta-6-release-window-take-two"
+    category: "News"
   },
   {
     id: 2,
     title: "Final Fantasy 7 Rebirth Review",
     image: "https://assets.reedpop.com/FF7R_header.jpg/BROK/thumbnail/1200x900/quality/100/FF7R_header.jpg",
     rating: 4.8,
-    category: "Review",
-    sourceUrl: "https://www.gamespot.com/reviews/final-fantasy-7-rebirth-review-in-progress/1900-6418122/"
+    category: "Review"
   },
   {
     id: 3,
     title: "Dragon's Dogma 2 Launch Coverage",
     image: "https://assets.xboxservices.com/assets/6f/21/6f21712b-d7c5-4912-8486-da4efe4829c3.jpg",
     rating: 4.7,
-    category: "Review",
-    sourceUrl: "https://www.eurogamer.net/dragons-dogma-2-review"
+    category: "Review"
   }
 ];
 
@@ -38,24 +35,21 @@ const latestNews = [
     title: "PlayStation 5 Pro Officially Announced",
     image: "https://www.digitaltrends.com/wp-content/uploads/2023/03/PlayStation-5-Pro-Price-Release-Date-Specs.jpg",
     excerpt: "Sony confirms PlayStation 5 Pro specifications and holiday 2024 release window, promising significant performance improvements.",
-    date: "April 22, 2025",
-    sourceUrl: "https://blog.playstation.com/2024/03/ps5-pro-announcement"
+    date: "April 22, 2025"
   },
   {
     id: 2,
     title: "Elden Ring: Shadow of the Erdtree DLC Release Date Revealed",
     image: "https://cdn.akamai.steamstatic.com/steam/apps/1045750/ss_e80a907c2c43337e53316c71555c3c9139dd1111.jpg",
     excerpt: "FromSoftware announces June 21st release date for highly anticipated Elden Ring expansion.",
-    date: "April 21, 2025",
-    sourceUrl: "https://www.bandainamcoent.com/news/eldenring-shadowoftheerdtree"
+    date: "April 21, 2025"
   },
   {
     id: 3,
     title: "Xbox Developer Direct 2025 Announcements",
     image: "https://news.xbox.com/en-us/wp-content/uploads/sites/2/2024/01/Dev-Direct-Hero-72f54fce36338493c659.jpg",
     excerpt: "Microsoft reveals new first-party titles and Game Pass additions in latest showcase event.",
-    date: "April 20, 2025",
-    sourceUrl: "https://news.xbox.com/2024/developer-direct-2025"
+    date: "April 20, 2025"
   }
 ];
 
@@ -148,13 +142,7 @@ const HomePage = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredGames.map((game) => (
-              <a 
-                key={game.id} 
-                href={game.sourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block"
-              >
+              <div key={game.id} className="group block">
                 <div className="relative overflow-hidden rounded-lg transition-transform duration-300 hover:-translate-y-1">
                   <MediaContent 
                     title={game.title}
@@ -175,7 +163,7 @@ const HomePage = () => {
                     </div>
                   </div>
                 </div>
-              </a>
+              </div>
             ))}
           </div>
         </div>
@@ -194,30 +182,18 @@ const HomePage = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {latestNews.map((item) => (
-              <a 
-                key={item.id}
-                href={item.sourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-              >
-                <Card className="bg-gaming-gray border-none shadow-lg overflow-hidden hover:transform hover:-translate-y-1 transition duration-300">
-                  <MediaContent 
-                    title={item.title}
-                    imageUrl={item.image}
-                    aspectRatio="wide"
-                  />
-                  <CardContent className="p-6">
-                    <span className="text-sm text-gaming-red">{item.date}</span>
-                    <h3 className="text-xl font-bold text-gaming-white mt-2 mb-3">{item.title}</h3>
-                    <p className="text-gaming-light-gray mb-4">{item.excerpt}</p>
-                    <div className="flex items-center text-gaming-red hover:text-red-400">
-                      <span className="mr-2">Read Full Article</span>
-                      <ExternalLink size={16} />
-                    </div>
-                  </CardContent>
-                </Card>
-              </a>
+              <Card key={item.id} className="bg-gaming-gray border-none shadow-lg overflow-hidden hover:transform hover:-translate-y-1 transition duration-300">
+                <MediaContent 
+                  title={item.title}
+                  imageUrl={item.image}
+                  aspectRatio="wide"
+                />
+                <CardContent className="p-6">
+                  <span className="text-sm text-gaming-red">{item.date}</span>
+                  <h3 className="text-xl font-bold text-gaming-white mt-2 mb-3">{item.title}</h3>
+                  <p className="text-gaming-light-gray">{item.excerpt}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>

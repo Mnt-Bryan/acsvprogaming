@@ -1,4 +1,3 @@
-
 import MainLayout from "@/components/layout/MainLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Trophy, Star, Search } from "lucide-react";
@@ -9,13 +8,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
 import MediaContent from "@/components/common/MediaContent";
 
-// Updated game reviews data with real images and video IDs
 const gameReviews = [
   {
     id: 1,
     title: "Final Fantasy VII Rebirth",
     image: "https://image.api.playstation.com/vulcan/ap/rnd/202306/1219/65f60d54e44c50aac58d55913a364fd4edfc8ed4c0cb4331.jpg",
-    videoId: "4_ErhyQpIpA",
     rating: 4.8,
     category: "RPG",
     platform: "PS5",
@@ -27,7 +24,6 @@ const gameReviews = [
     id: 2,
     title: "Dragon's Dogma 2",
     image: "https://assets-prd.ignimgs.com/2022/06/24/dragons-dogma-2-blog-1656043418068.jpg",
-    videoId: "oI9CdzhOFHU",
     rating: 4.6,
     category: "Action RPG",
     platform: "Multi-platform",
@@ -39,7 +35,6 @@ const gameReviews = [
     id: 3,
     title: "Elden Ring: Shadow of the Erdtree",
     image: "https://image.api.playstation.com/vulcan/ap/rnd/202306/1301/54cee7f682fa612c3f71febab6e3ad19baa253ca9bfa4227.jpg",
-    videoId: "Sef-fffftl4",
     rating: 4.9,
     category: "Action RPG",
     platform: "Multi-platform",
@@ -51,7 +46,6 @@ const gameReviews = [
     id: 4,
     title: "Senua's Saga: Hellblade II",
     image: "https://cdn.akamai.steamstatic.com/steam/apps/2461850/ss_4c546336ee87aaae17b889166344e9fb5441759a.jpg",
-    videoId: "Q5DO9WWwR0Y",
     rating: 4.5,
     category: "Action-Adventure",
     platform: "Xbox Series X/PC",
@@ -63,7 +57,6 @@ const gameReviews = [
     id: 5,
     title: "Silent Hill 2 Remake",
     image: "https://blog.playstation.com/tachyon/2022/10/6e296608a94ea9afe3eb764e11b5f18577307a48.jpg",
-    videoId: "3ZjWtAKlv24",
     rating: 4.7,
     category: "Horror",
     platform: "PS5/PC",
@@ -75,7 +68,6 @@ const gameReviews = [
     id: 6,
     title: "Avowed",
     image: "https://cdn.vox-cdn.com/thumbor/LqeS_nqA5gDzgMYOzH9qLrLDjZ0=/0x0:3840x2160/1200x675/filters:focal(1613x773:2227x1387)/cdn.vox-cdn.com/uploads/chorus_image/image/72941183/Screenshot_2024_01_18_184456.0.png",
-    videoId: "Uv8UUxTEpTU",
     rating: 4.4,
     category: "RPG",
     platform: "Xbox Series X/PC",
@@ -90,7 +82,6 @@ const ReviewsPage = () => {
   
   return (
     <MainLayout>
-      {/* Hero Banner */}
       <div className="bg-gaming-black bg-[url('https://videogamer.com/wp-content/uploads/Game-Reviews-Header.jpg')] bg-cover bg-center bg-blend-overlay bg-opacity-70 py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gaming-white mb-4">Game Reviews</h1>
@@ -100,7 +91,6 @@ const ReviewsPage = () => {
         </div>
       </div>
       
-      {/* Search and Filter Section */}
       <section className="py-8 bg-gaming-gray">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-4 justify-between">
@@ -154,7 +144,6 @@ const ReviewsPage = () => {
         </div>
       </section>
       
-      {/* Reviews Categories Tabs */}
       <section className="py-10 bg-black">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="all">
@@ -197,7 +186,6 @@ const ReviewsPage = () => {
                       <p className="text-gaming-light-gray text-sm mb-4">{review.excerpt}</p>
                       <div className="flex justify-between items-center">
                         <span className="text-sm text-gaming-light-gray">By {review.reviewerName}</span>
-                        <Button variant="link" className="text-gaming-red p-0 h-auto">Read Review</Button>
                       </div>
                     </CardContent>
                   </Card>
@@ -238,7 +226,6 @@ const ReviewsPage = () => {
                       <p className="text-gaming-light-gray text-sm mb-4">{review.excerpt}</p>
                       <div className="flex justify-between items-center">
                         <span className="text-sm text-gaming-light-gray">By {review.reviewerName}</span>
-                        <Button variant="link" className="text-gaming-red p-0 h-auto">Read Review</Button>
                       </div>
                     </CardContent>
                   </Card>
@@ -276,7 +263,6 @@ const ReviewsPage = () => {
                       <p className="text-gaming-light-gray text-sm mb-4">{review.excerpt}</p>
                       <div className="flex justify-between items-center">
                         <span className="text-sm text-gaming-light-gray">By {review.reviewerName}</span>
-                        <Button variant="link" className="text-gaming-red p-0 h-auto">Read Review</Button>
                       </div>
                     </CardContent>
                   </Card>
@@ -314,7 +300,6 @@ const ReviewsPage = () => {
                       <p className="text-gaming-light-gray text-sm mb-4">{review.excerpt}</p>
                       <div className="flex justify-between items-center">
                         <span className="text-sm text-gaming-light-gray">By {review.reviewerName}</span>
-                        <Button variant="link" className="text-gaming-red p-0 h-auto">Read Review</Button>
                       </div>
                     </CardContent>
                   </Card>
