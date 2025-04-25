@@ -41,6 +41,7 @@ const newsItems = [
     excerpt: "Microsoft announces several high-profile additions to Xbox Game Pass for May 2025, including recent AAA releases and indie gems.",
     readTime: "3 min read",
     sourceUrl: "https://news.xbox.com/2025/04/gamepass-may-update",
+    image: "https://assets.xboxservices.com/assets/8c/d1/8cd16740-cebd-4dba-aaed-f250b42cb1bc.jpg",
     tags: ["Xbox", "Game Pass", "Microsoft"]
   },
   {
@@ -52,6 +53,7 @@ const newsItems = [
     excerpt: "Alleged technical specifications for Sony's next-generation console have surfaced, suggesting significant improvements in processing power and ray-tracing capabilities.",
     readTime: "5 min read",
     sourceUrl: "https://www.eurogamer.net/playstation6-specs-leaked",
+    image: "https://gmedia.playstation.com/is/image/SIEPDC/ps5-product-thumbnail-01-en-14sep21",
     tags: ["PlayStation", "Hardware", "Sony"]
   },
   {
@@ -63,6 +65,7 @@ const newsItems = [
     excerpt: "Valve is reportedly preparing to announce Counter-Strike 3 at an upcoming major gaming event, featuring a new engine and modern graphics.",
     readTime: "4 min read",
     sourceUrl: "https://www.pcgamer.com/counter-strike-3-announcement",
+    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg",
     tags: ["Valve", "Counter-Strike", "FPS"]
   },
   {
@@ -74,6 +77,7 @@ const newsItems = [
     excerpt: "Nintendo has officially unveiled the launch lineup for their next-generation console, including new entries in beloved franchises.",
     readTime: "6 min read",
     sourceUrl: "https://www.nintendo.com/switch2-launch-lineup",
+    image: "https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_2.0/c_scale,w_400/ncom/en_US/switch/site-design-update/hardware/switch/nintendo-switch-oled-model-white-set/gallery/image01",
     tags: ["Nintendo", "Switch 2", "Launch Games"]
   }
 ];
