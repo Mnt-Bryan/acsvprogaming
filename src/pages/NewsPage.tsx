@@ -16,7 +16,8 @@ const featuredNews = {
   author: "ACSV Team",
   excerpt: "The ACSV Biya Cup of Nations is set to be a landmark event in the esports calendar, bringing together top talent from across Cameroon and beyond. Organized by the Association Camerounaise des Sports Virtuels (ACSV), this tournament aims to celebrate the growing popularity of esports in Africa.",
   readTime: "3 min read",
-  tags: ["Esports", "Tournament", "Africa"]
+  tags: ["Esports", "Tournament", "Africa"],
+  sourceUrl: "#"
 };
 
 const newsItems = [
