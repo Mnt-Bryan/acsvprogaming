@@ -9,15 +9,14 @@ import MediaContent from "@/components/common/MediaContent";
 
 const featuredNews = {
   id: 1,
-  title: "Bethesda Announces New Indiana Jones Game Release Window",
-  image: "https://assets.xboxservices.com/assets/6f/21/6f21712b-d7c5-4912-8486-da4efe4829c3.jpg",
-  category: "Industry",
-  date: "April 22, 2025",
-  author: "James Wilson",
-  excerpt: "Bethesda and MachineGames have revealed a Holiday 2024 release window for their highly anticipated Indiana Jones game, featuring an original story set in the Vatican City.",
-  readTime: "5 min read",
-  sourceUrl: "https://bethesda.net/game/indiana-jones",
-  tags: ["Bethesda", "Action-Adventure", "MachineGames"]
+  title: "ACSV Biya Cup of Nations Announced",
+  image: "/lovable-uploads/1a57f745-6978-43d6-8ac6-e6c8d694becf.png",
+  category: "Esports",
+  date: "April 25, 2025",
+  author: "ACSV Team",
+  excerpt: "The ACSV Biya Cup of Nations is set to be a landmark event in the esports calendar, bringing together top talent from across Cameroon and beyond. Organized by the Association Camerounaise des Sports Virtuels (ACSV), this tournament aims to celebrate the growing popularity of esports in Africa.",
+  readTime: "3 min read",
+  tags: ["Esports", "Tournament", "Africa"]
 };
 
 const newsItems = [
@@ -25,11 +24,12 @@ const newsItems = [
     id: 2,
     title: "Elden Ring: Shadow of the Erdtree DLC Release Date and Details Revealed",
     category: "Games",
-    date: "April 21, 2025",
+    date: "April 24, 2025",
     author: "Emily Parker",
     excerpt: "FromSoftware has officially announced the release date for Elden Ring's highly anticipated DLC, Shadow of the Erdtree, coming June 21st. The expansion promises new areas, bosses, and weapons.",
     readTime: "4 min read",
     sourceUrl: "https://www.bandainamcoent.com/news/eldenring-shadowoftheerdtree",
+    image: "https://cdn.akamai.steamstatic.com/steam/apps/1045750/ss_e80a907c2c43337e53316c71555c3c9139dd1111.jpg",
     tags: ["Elden Ring", "FromSoftware", "DLC"]
   },
   {
