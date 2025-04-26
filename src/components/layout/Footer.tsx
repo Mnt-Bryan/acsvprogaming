@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Youtube, ExternalLink } from "lucide-react";
 import { DiscordLogoIcon } from "@radix-ui/react-icons";
@@ -102,7 +101,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <span className="text-gaming-light-gray">Email:</span>
-                <a href="mailto:info@acsv.com" className="ml-2 hover:text-gaming-red transition duration-200">info@acsv.com</a>
+                <a href="mailto:Acsv684@gmail.com" className="ml-2 hover:text-gaming-red transition duration-200">Acsv684@gmail.com</a>
               </li>
             </ul>
           </div>

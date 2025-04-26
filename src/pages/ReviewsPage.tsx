@@ -12,7 +12,7 @@ const gameReviews = [
   {
     id: 1,
     title: "Final Fantasy VII Rebirth",
-    image: "https://image.api.playstation.com/vulcan/ap/rnd/202306/1219/65f60d54e44c50aac58d55913a364fd4edfc8ed4c0cb4331.jpg",
+    image: "/lovable-uploads/d1ac9d6a-7dd0-4021-8a4e-fcb3ccb1f6d6.png",
     rating: 4.8,
     category: "RPG",
     platform: "PS5",
@@ -24,7 +24,7 @@ const gameReviews = [
   {
     id: 2,
     title: "Dragon's Dogma 2",
-    image: "https://assets-prd.ignimgs.com/2022/06/24/dragons-dogma-2-blog-1656043418068.jpg",
+    image: "/lovable-uploads/e17d86f9-6d18-46e9-b855-4c92134a214c.png",
     rating: 4.6,
     category: "Action RPG",
     platform: "Multi-platform",
@@ -36,7 +36,7 @@ const gameReviews = [
   {
     id: 3,
     title: "Elden Ring: Shadow of the Erdtree",
-    image: "https://image.api.playstation.com/vulcan/ap/rnd/202306/1301/54cee7f682fa612c3f71febab6e3ad19baa253ca9bfa4227.jpg",
+    image: "/lovable-uploads/7a9fa154-3d7c-487f-8f86-54181886feee.png",
     rating: 4.9,
     category: "Action RPG",
     platform: "Multi-platform",
@@ -48,7 +48,7 @@ const gameReviews = [
   {
     id: 4,
     title: "Senua's Saga: Hellblade II",
-    image: "https://cdn.akamai.steamstatic.com/steam/apps/2461850/ss_4c546336ee87aaae17b889166344e9fb5441759a.jpg",
+    image: "/lovable-uploads/c72913d1-5666-4f06-b4a5-e65e765a3362.png",
     rating: 4.5,
     category: "Action-Adventure",
     platform: "Xbox Series X/PC",
@@ -60,7 +60,7 @@ const gameReviews = [
   {
     id: 5,
     title: "Silent Hill 2 Remake",
-    image: "https://blog.playstation.com/tachyon/2022/10/6e296608a94ea9afe3eb764e11b5f18577307a48.jpg",
+    image: "/lovable-uploads/afbe3920-8166-4422-a001-d76230720cc1.png",
     rating: 4.7,
     category: "Horror",
     platform: "PS5/PC",
@@ -72,7 +72,7 @@ const gameReviews = [
   {
     id: 6,
     title: "Avowed",
-    image: "https://cdn.vox-cdn.com/thumbor/LqeS_nqA5gDzgMYOzH9qLrLDjZ0=/0x0:3840x2160/1200x675/filters:focal(1613x773:2227x1387)/cdn.vox-cdn.com/uploads/chorus_image/image/72941183/Screenshot_2024_01_18_184456.0.png",
+    image: "/lovable-uploads/9e20d6b6-8187-40ed-abcc-86bb1c7dc92b.png",
     rating: 4.4,
     category: "RPG",
     platform: "Xbox Series X/PC",
