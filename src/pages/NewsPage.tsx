@@ -30,7 +30,7 @@ const newsItems = [
     excerpt: "FromSoftware has officially announced the release date for Elden Ring's highly anticipated DLC, Shadow of the Erdtree, coming June 21st. The expansion promises new areas, bosses, and weapons.",
     readTime: "4 min read",
     sourceUrl: "https://www.bandainamcoent.com/news/eldenring-shadowoftheerdtree",
-    image: "https://cdn.akamai.steamstatic.com/steam/apps/1045750/ss_e80a907c2c43337e53316c71555c3c9139dd1111.jpg",
+    image: "/lovable-uploads/4ee132ff-1165-4cfe-95c6-c4db23dc9a36.png",
     tags: ["Elden Ring", "FromSoftware", "DLC"]
   },
   {
@@ -42,7 +42,7 @@ const newsItems = [
     excerpt: "Microsoft announces several high-profile additions to Xbox Game Pass for May 2025, including recent AAA releases and indie gems.",
     readTime: "3 min read",
     sourceUrl: "https://news.xbox.com/2025/04/gamepass-may-update",
-    image: "https://assets.xboxservices.com/assets/8c/d1/8cd16740-cebd-4dba-aaed-f250b42cb1bc.jpg",
+    image: "/lovable-uploads/3c8fd2a5-86c5-4609-a1a3-def93aa2ec43.png",
     tags: ["Xbox", "Game Pass", "Microsoft"]
   },
   {
@@ -182,15 +182,9 @@ const NewsPage = () => {
                             {featuredNews.excerpt}
                           </p>
                         </div>
-                        <div className="flex justify-between items-center">
-                          <div>
-                            <p className="text-sm text-gaming-light-gray">By {featuredNews.author}</p>
-                            <p className="text-xs text-gaming-light-gray mt-1">{featuredNews.readTime}</p>
-                          </div>
-                          <div className="flex items-center text-gaming-red hover:text-red-400">
-                            <span className="mr-2">Read Full Article</span>
-                            <ExternalLink size={16} />
-                          </div>
+                        <div>
+                          <p className="text-sm text-gaming-light-gray">By {featuredNews.author}</p>
+                          <p className="text-xs text-gaming-light-gray mt-1">{featuredNews.readTime}</p>
                         </div>
                       </CardContent>
                     </div>
@@ -228,12 +222,8 @@ const NewsPage = () => {
                         </div>
                         <h3 className="text-xl font-bold text-white mb-3">{news.title}</h3>
                         <p className="text-gaming-light-gray text-sm mb-4 line-clamp-3">{news.excerpt}</p>
-                        <div className="flex justify-between items-center">
+                        <div className="flex items-center">
                           <span className="text-sm text-gaming-light-gray">By {news.author}</span>
-                          <div className="flex items-center text-gaming-red hover:text-red-400">
-                            <span className="mr-2">Read Full Article</span>
-                            <ExternalLink size={16} />
-                          </div>
                         </div>
                       </CardContent>
                     </Card>
