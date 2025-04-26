@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,21 +15,21 @@ const latestNews: NewsItem[] = [
   {
     id: 1,
     title: "PlayStation 5 Pro Officially Announced",
-    image: "https://www.digitaltrends.com/wp-content/uploads/2023/03/PlayStation-5-Pro-Price-Release-Date-Specs.jpg",
+    image: "/lovable-uploads/de4a9288-efca-40d3-bb0e-a9985fbf5729.png",
     excerpt: "Sony confirms PlayStation 5 Pro specifications and holiday 2024 release window, promising significant performance improvements.",
     date: "April 22, 2025"
   },
   {
     id: 2,
     title: "Elden Ring: Shadow of the Erdtree DLC Release Date Revealed",
-    image: "https://cdn.akamai.steamstatic.com/steam/apps/1045750/ss_e80a907c2c43337e53316c71555c3c9139dd1111.jpg",
+    image: "/lovable-uploads/11e1310b-4bff-4005-af9c-d808d4a74ee8.png",
     excerpt: "FromSoftware announces June 21st release date for highly anticipated Elden Ring expansion.",
     date: "April 21, 2025"
   },
   {
     id: 3,
     title: "Xbox Developer Direct 2025 Announcements",
-    image: "https://news.xbox.com/en-us/wp-content/uploads/sites/2/2024/01/Dev-Direct-Hero-72f54fce36338493c659.jpg",
+    image: "/lovable-uploads/1f2fccb6-f1d5-4449-9880-60201a56737b.png",
     excerpt: "Microsoft reveals new first-party titles and Game Pass additions in latest showcase event.",
     date: "April 20, 2025"
   }
