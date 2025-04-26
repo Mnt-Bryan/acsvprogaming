@@ -9,21 +9,21 @@ const featuredGames = [
   {
     id: 1,
     title: "GTA 6 Release Window Announced",
-    image: "https://cdn.vox-cdn.com/thumbor/s3nNXrdRt5nhmq8CDY9Qpt9guag=/0x0:1920x1080/1400x933/filters:focal(940x401:1231x692):no_upscale()/cdn.vox-cdn.com/uploads/chorus_image/image/72905011/GTA_6.0.jpeg",
+    image: "/lovable-uploads/ffe16eca-630c-475e-9202-f2b97aace297.png",
     rating: 4.9,
     category: "News"
   },
   {
     id: 2,
     title: "Final Fantasy 7 Rebirth Review",
-    image: "https://assets.reedpop.com/FF7R_header.jpg/BROK/thumbnail/1200x900/quality/100/FF7R_header.jpg",
+    image: "/lovable-uploads/7d8604b4-58f3-4fc7-bbf4-0a7eb1287930.png",
     rating: 4.8,
     category: "Review"
   },
   {
     id: 3,
     title: "Dragon's Dogma 2 Launch Coverage",
-    image: "https://assets.xboxservices.com/assets/6f/21/6f21712b-d7c5-4912-8486-da4efe4829c3.jpg",
+    image: "/lovable-uploads/621c4607-4d1a-446d-a835-2234a42c147e.png",
     rating: 4.7,
     category: "Review"
   }
