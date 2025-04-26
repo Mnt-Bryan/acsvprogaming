@@ -1,9 +1,12 @@
+
 import React, { useState } from 'react';
 import MainLayout from "@/components/layout/MainLayout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ReviewHero from '@/components/reviews/ReviewHero';
 import ReviewFilters from '@/components/reviews/ReviewFilters';
 import ReviewTabContent from '@/components/reviews/ReviewTabContent';
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const gameReviews = [
   {
@@ -80,8 +83,30 @@ const gameReviews = [
   }
 ];
 
+const ITEMS_PER_PAGE = 3;
+
 const ReviewsPage = () => {
   const [filter, setFilter] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
+  
+  const totalPages = Math.ceil(gameReviews.length / ITEMS_PER_PAGE);
+  
+  // Get current reviews based on pagination
+  const indexOfLastReview = currentPage * ITEMS_PER_PAGE;
+  const indexOfFirstReview = indexOfLastReview - ITEMS_PER_PAGE;
+  const currentReviews = gameReviews.slice(indexOfFirstReview, indexOfLastReview);
+  
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+  
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
   
   return (
     <MainLayout>
@@ -101,7 +126,29 @@ const ReviewsPage = () => {
             </div>
             
             <TabsContent value="all" className="mt-0">
-              <ReviewTabContent reviews={gameReviews} showLoadMore />
+              <ReviewTabContent reviews={currentReviews} />
+              
+              <div className="flex justify-center items-center mt-8 gap-4">
+                <Button 
+                  onClick={prevPage} 
+                  disabled={currentPage === 1}
+                  variant="outline" 
+                  className="bg-gaming-gray border-gaming-red hover:bg-gaming-red hover:text-white"
+                >
+                  <ChevronLeft className="mr-1" size={16} /> Previous
+                </Button>
+                <span className="text-gaming-white px-4">
+                  Page {currentPage} of {totalPages}
+                </span>
+                <Button 
+                  onClick={nextPage} 
+                  disabled={currentPage === totalPages}
+                  variant="outline"
+                  className="bg-gaming-gray border-gaming-red hover:bg-gaming-red hover:text-white"
+                >
+                  Next <ChevronRight className="ml-1" size={16} />
+                </Button>
+              </div>
             </TabsContent>
             
             <TabsContent value="featured" className="mt-0">

@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Button } from "@/components/ui/button";
 import GameReviewCard from './GameReviewCard';
 
 interface GameReview {
@@ -31,7 +30,9 @@ const ReviewTabContent = ({ reviews, showLoadMore = false }: ReviewTabContentPro
       </div>
       {showLoadMore && (
         <div className="flex justify-center mt-12">
-          <Button className="bg-gaming-red hover:bg-red-700 text-white">Load More Reviews</Button>
+          <button className="bg-gaming-red hover:bg-red-700 text-white px-6 py-2 rounded">
+            Load More Reviews
+          </button>
         </div>
       )}
     </div>
