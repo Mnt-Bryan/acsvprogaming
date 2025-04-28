@@ -2,6 +2,7 @@
 import { ReactNode } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import TranslateToggle from "../common/TranslateToggle";
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -15,6 +16,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
         {children}
       </main>
       <Footer />
+      <TranslateToggle />
     </div>
   );
 };
